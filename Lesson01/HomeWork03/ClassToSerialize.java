@@ -2,12 +2,11 @@ package HomeWork03;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * Created by st on 22.07.2015.
  */
-public class ClassToSerialize {
+public class ClassToSerialize implements Serializable {
     @Save
     public String s1 = "String #1";
     private String s2 = "String #2";
@@ -17,19 +16,16 @@ public class ClassToSerialize {
     public int i1 = 1;
     @Save
     public int i2 = 2;
+    @Save
+    public TestClass testClass = new TestClass();
 
-    public void customSerialize(BufferedWriter br, ArrayList<String> values) throws IOException
+    class TestClass implements Serializable
     {
-        for (String s : values)
-        {
-            br.write(s);
-            br.write(System.getProperty("line.separator"));
-        }
-    }
-
-    public void customDeserialize(ObjectOutput out, String [] values)
-    {
-
+        public int a = 0;
+        public int b = 0;
+        public Long aLong = 0L;
     }
 
 }
+
+

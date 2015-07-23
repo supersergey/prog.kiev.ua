@@ -73,6 +73,7 @@ public class Main {
         classToSerialize.i1 = 10;
         classToSerialize.i2 = 20;
         classToSerialize.s1 = "New String";
+        classToSerialize.testClass.aLong = 256L;
 
         ClassToSerialize newInstance = new ClassToSerialize();
         customDeserialize(newInstance, filename);
@@ -80,6 +81,7 @@ public class Main {
         System.out.println(classToSerialize.i1 + " : " + newInstance.i1);
         System.out.println(classToSerialize.i2 + " : " + newInstance.i2);
         System.out.println(classToSerialize.s1 + " : " + newInstance.s1);
+        System.out.println(classToSerialize.testClass + " : " + newInstance.testClass);
 
     }
 }
