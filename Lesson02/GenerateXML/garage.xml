@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<garage>
+    <vehicles>
+        <cc>600</cc>
+        <color>black</color>
+        <model>CBR</model>
+        <name>Honda</name>
+    </vehicles>
+    <vehicles>
+        <cc>600</cc>
+        <color>black</color>
+        <model>Hornet</model>
+        <name>Honda</name>
+    </vehicles>
+    <vehicles>
+        <cc>250</cc>
+        <color>combined</color>
+        <model>TTR</model>
+        <name>Yamaha</name>
+    </vehicles>
+</garage>
