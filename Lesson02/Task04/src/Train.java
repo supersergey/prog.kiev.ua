@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * Created by st on 23.07.2015.
  */
-@XmlRootElement(name="book")
+@XmlRootElement(name="train")
 public class Train {
     private int id;
     private String from;
@@ -13,9 +13,7 @@ public class Train {
     private String date;
     private String departure;
 
-    public Train() {
-
-    }
+    public Train() {}
 
     public Train(int id, String from, String to, String date, String departure) {
         this.id = id;
@@ -24,6 +22,7 @@ public class Train {
         this.date = date;
         this.departure = departure;
     }
+
 
     public int getId() {
         return id;
@@ -68,5 +67,16 @@ public class Train {
     @XmlElement
     public void setDeparture(String departure) {
         this.departure = departure;
+    }
+
+    @Override
+    public String toString() {
+        return "Train{" +
+                "id=" + id +
+                ", from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", date='" + date + '\'' +
+                ", departure='" + departure + '\'' +
+                '}';
     }
 }

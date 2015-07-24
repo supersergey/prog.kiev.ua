@@ -1,3 +1,5 @@
+/* Task: parse trains.xml file, filter trains with the specified departure time (15:00 - 19:00) */
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -21,8 +23,8 @@ public class Main {
             for (Train train : trains.getTrains())
             {
                 String[] departure = train.getDeparture().split(":");
-                if (Integer.parseInt(departure[0])>=15 && Integer.parseInt(departure[0])<=19)
-                    System.out.println(train.getId());
+                if (Integer.parseInt(departure[0])>=15 && Integer.parseInt(departure[0])<19)
+                    System.out.println(train);
             }
         } catch (JAXBException e) {
             e.printStackTrace();
