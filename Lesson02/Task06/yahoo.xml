@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query xmlns:yahoo="http://www.yahooapis.com/v1/base.rng" yahoo:count="2" yahoo:created="2015-07-24T12:41:33Z" yahoo:lang="uk-UA"><results><rate id="USDEUR"><Name>USD/EUR</Name><Rate>0.9135</Rate><Date>7/24/2015</Date><Time>1:41pm</Time><Ask>0.9136</Ask><Bid>0.9135</Bid></rate><rate id="USDUAH"><Name>USD/UAH</Name><Rate>22.0500</Rate><Date>7/24/2015</Date><Time>1:41pm</Time><Ask>22.1000</Ask><Bid>22.0500</Bid></rate></results></query><!-- total: 13 -->
+<!-- pprd1-node1004-lh2.manhattan.bf1.yahoo.com -->
