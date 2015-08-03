@@ -24,7 +24,7 @@ public class FileManager {
     }
 
     public byte[] get(String url) {
-        final long cacheTime = 20 * 1000L; // 20 seconds
+        final long cacheTime = 40 * 1000L; // 40 seconds
         try {
             CachedFile aFile = new CachedFile();
 

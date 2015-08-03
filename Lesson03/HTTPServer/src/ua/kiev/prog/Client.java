@@ -1,14 +1,16 @@
 package ua.kiev.prog;
 
+import java.lang.Exception;
 import java.io.*;
-import java.net.Socket;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Thread;
 
 public class Client implements Runnable {
     private Socket socket;
     private FileManager fm;
-
+    
     public Client(Socket socket, String path) {
         this.socket = socket;
         fm = new FileManager(path);
@@ -32,65 +34,17 @@ public class Client implements Runnable {
         byte[] resp = msg.concat("\r\n\r\n").getBytes();
         os.write(resp);
     }
-
+    
     private byte[] getBinaryHeaders(List<String> headers) {
         StringBuilder res = new StringBuilder();
 
-        for (String s : headers)
+        for (String s : headers) 
             res.append(s);
-
+            
         return res.toString().getBytes();
     }
-
-    private void doPost(OutputStream os) throws IOException
-    {
-        String content = "Test POST reply";
-        List<String> headers = new ArrayList<String>();
-        headers.add("HTTP/1.1 200 OK\r\n");
-        headers.add("Content-Length: " + content.length() + "\r\n");
-        headers.add("Connection: close\r\n\r\n");
-        os.write(getBinaryHeaders(headers));
-        os.write(content.getBytes());
-    }
-
-    private void doGet(OutputStream os, String url) throws IOException
-    {
-        if ("/".equals(url))
-            url = "/index.html";
-
-        List<String> headers = new ArrayList<String>();
-        headers.add("HTTP/1.1 200 OK\r\n");
-
-        byte[] content = fm.get(url);
-
-        if (content == null) {
-            returnStatusCode(404, os);
-            return;
-        }
-
-        ProcessorsList pl = new ProcessorsList();
-        pl.add(new Compressor(6));
-        // pl.add(new Chunker(30)); // comment
-        content = pl.process(content, headers);
-
-        if (content == null) {
-            returnStatusCode(500, os);
-            return;
-        }
-
-        // uncomment next line
-        headers.add("Content-Length: " + content.length + "\r\n");
-        headers.add("Connection: close\r\n\r\n");
-        os.write(getBinaryHeaders(headers));
-        os.write(content);
-    }
-
+    
     private void process(String request, OutputStream os) throws IOException {
-
-        FileWriter writer = new FileWriter("c:\\temp\\request.txt", true);
-        writer.write(request);
-        writer.flush();
-        writer.close();
         System.out.println(request);
         System.out.println("---------------------------------------------");
 
@@ -104,21 +58,43 @@ public class Client implements Runnable {
         }
 
         String method = parts[0], url = parts[1], version = parts[2];
-
-        if ((!version.equalsIgnoreCase("HTTP/1.0")) && (!version.equalsIgnoreCase("HTTP/1.1"))) {
+        
+        if (( ! version.equalsIgnoreCase("HTTP/1.0")) && ( ! version.equalsIgnoreCase("HTTP/1.1"))) {
             returnStatusCode(400, os);
             return;
         }
-        if (method.equalsIgnoreCase("GET")) {
-            doGet(os, url);
-        }
-        else if (method.equalsIgnoreCase("POST"))
-        {
-
-            doPost(os);
-        }
-        else
+        if ( ! method.equalsIgnoreCase("GET")) {
             returnStatusCode(400, os);
+            return;
+        }
+        if ("/".equals(url))
+            url = "/ua/kiev/prog/index.html";
+        
+        List<String> headers = new ArrayList<String>();
+        headers.add("HTTP/1.1 200 OK\r\n");
+        
+        byte[] content = fm.get(url);
+        if (content == null) {
+            returnStatusCode(404, os);
+            return;
+        }
+        
+        ProcessorsList pl = new ProcessorsList();
+        pl.add(new Compressor(6));
+        pl.add(new Chunker(30)); // comment
+        content = pl.process(content, headers);
+
+        if (content == null) {
+            returnStatusCode(500, os);
+            return;
+        }
+
+        // uncomment next line
+        // headers.add("Content-Length: " + content.length + "\r\n");
+        headers.add("Connection: close\r\n\r\n");
+            
+        os.write(getBinaryHeaders(headers));
+        os.write(content);
     }
 
     public void run() {
@@ -140,13 +116,14 @@ public class Client implements Runnable {
                     temp = bs.toByteArray();
 
                     for (int i = 0; i < temp.length - 3; i++) {
-                        if ((temp[i] == (byte) 13) && (temp[i + 1] == (byte) 10) &&
-                                (temp[i + 2] == (byte) 13) && (temp[i + 3] == (byte) 10)) {
+                        if ((temp[i] == (byte)13) && (temp[i + 1] == (byte)10) &&
+                            (temp[i + 2] == (byte)13) && (temp[i + 3] == (byte)10))
+                        {
                             String request = new String(temp, 0, i);
                             process(request, os);
                         }
                     }
-                } while (!Thread.currentThread().isInterrupted());
+                } while ( ! Thread.currentThread().isInterrupted());
             } finally {
                 socket.close();
             }
