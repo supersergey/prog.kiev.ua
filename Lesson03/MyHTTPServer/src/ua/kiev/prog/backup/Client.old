@@ -2,7 +2,6 @@ package ua.kiev.prog;
 
 import java.io.*;
 import java.net.Socket;
-import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -48,22 +47,34 @@ public class Client implements Runnable {
     private void doPost(OutputStream os, String request) throws IOException
     {
         // String content = "Test POST reply";
-        int currentIndex = 0;
-        int boundaryIndex = request.indexOf("boundary=") + "boundary=".length();
-        String boundary = request.substring(boundaryIndex, request.indexOf("\r\n", boundaryIndex));
+        int boundaryIndex = request.indexOf("boundary=") + "bundary=".length();
+        String boundary = "--" + request.substring(boundaryIndex, request.indexOf("\r\n", boundaryIndex));
+        System.out.println("********* " + boundary + "********* ");
 
-        currentIndex = boundaryIndex + boundary.length() + 2;
-        currentIndex = request.indexOf(boundary, currentIndex);
-        currentIndex = request.indexOf("\r\n\r\n", currentIndex) + 4;
-        int payLoadBeginIndex = currentIndex;
-        currentIndex = request.indexOf(boundary, currentIndex) - 4;
+        int firstBoundary = request.indexOf(boundary, boundaryIndex + boundary.length() + 1) ;
+        int lastBoundary = request.indexOf(boundary, firstBoundary + boundary.length() + 1);
 
-        String payload = request.substring(payLoadBeginIndex, currentIndex);
+        int firstCRLF = request.indexOf("\r\n\r\n", firstBoundary);
 
-        FileOutputStream fos = new FileOutputStream("c:\\temp\\tempfile.txt");
+        String payload = request.substring(firstCRLF + 4, lastBoundary-2);
+        Pattern pattern = Pattern.compile("filename=\".*\"");
+        Matcher matcher = pattern.matcher(request);
+
+        String filename = "c:\\temp\\default.txt";
+        if (matcher.find())
+        {
+            int i1 = matcher.start();
+            int i2 = matcher.end();
+            filename = request.substring(i1, i2);
+            filename = filename.substring("filename=".length()+1, filename.lastIndexOf('"'));
+            System.out.println(filename);
+        }
+
+        FileOutputStream fos = new FileOutputStream("c:\\temp\\temp" + filename);
         fos.write(payload.getBytes());
         fos.flush();
         fos.close();
+
 
         List<String> headers = new ArrayList<String>();
         headers.add("HTTP/1.1 200 OK\r\n");
@@ -109,9 +120,10 @@ public class Client implements Runnable {
 
         FileWriter writer = new FileWriter("c:\\temp\\request.txt");
         writer.write(request);
+        writer.write("\r\n==============\r\n");
         writer.flush();
         writer.close();
-        // System.out.println(request);
+        System.out.println(request);
         System.out.println("---------------------------------------------");
 
         String originalRequest = request;
@@ -141,42 +153,41 @@ public class Client implements Runnable {
             returnStatusCode(400, os);
     }
 
-
-
     public void run() {
-        try {
-            InputStream is = socket.getInputStream();
-            OutputStream os = socket.getOutputStream();
-            DataInputStream in = new DataInputStream(is);
 
-            ByteArrayOutputStream bs = new ByteArrayOutputStream();
-            byte[] buf = new byte[64 * 1024];
-            // byte[] temp;
-            int readBytesCount;
+            try {
+                InputStream is = socket.getInputStream();
+                OutputStream os = socket.getOutputStream();
+
+                ByteArrayOutputStream bs = new ByteArrayOutputStream();
+                byte[] buf = new byte[64 * 1024]; // 64KB buffer
+                int r;
 
                 try {
-                    /*do {
-                        readBytesCount = is.read(buf);
-                        if (readBytesCount == -1) {
-                            // no more data left
-                            break;
+                    do {
+                        boolean dataRead = false;
+                        while (is.available() > 0) {
+                            r = is.read(buf);
+                            if (r > 0) {
+                                bs.write(buf, 0, r);
+                                dataRead = true;
+                            }
                         }
-                        else
-                            bs.write(buf, 0, readBytesCount);
+                        if (dataRead) {
+                            bs.flush();
+                            String request = new String(bs.toByteArray());
+                            bs.close();
+                            process(request, os);
+                        }
 
-
-                    } while ( (! Thread.currentThread().isInterrupted()));*/
-                    byte[] temp = new byte[in.readInt()];
-                    in.readFully(temp);
-                    String request = temp.toString();
-                    process(request, os);
-
+                    }
+                    while (!Thread.currentThread().isInterrupted());
                 } finally {
                     socket.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return;
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return;
-        }
     }
 }
