@@ -89,6 +89,7 @@ public class Client implements Runnable {
 
         FileWriter writer = new FileWriter("c:\\temp\\request.txt", true);
         writer.write(request);
+        writer.write("\r\n==============\r\n");
         writer.flush();
         writer.close();
         System.out.println(request);
