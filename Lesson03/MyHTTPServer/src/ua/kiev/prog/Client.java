@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Client implements Runnable {
     private Socket socket;
@@ -42,15 +44,44 @@ public class Client implements Runnable {
         return res.toString().getBytes();
     }
 
-    private void doPost(OutputStream os) throws IOException
+    private void doPost(OutputStream os, String request) throws IOException
     {
-        String content = "Test POST reply";
+        // String content = "Test POST reply";
+        int boundaryIndex = request.indexOf("boundary=") + "bundary=".length();
+        String boundary = "--" + request.substring(boundaryIndex, request.indexOf("\r\n", boundaryIndex));
+        System.out.println("********* " + boundary + "********* ");
+
+        int firstBoundary = request.indexOf(boundary, boundaryIndex + boundary.length() + 1) ;
+        int lastBoundary = request.indexOf(boundary, firstBoundary + boundary.length() + 1);
+
+        int firstCRLF = request.indexOf("\r\n\r\n", firstBoundary);
+
+        String payload = request.substring(firstCRLF + 4, lastBoundary-2);
+        Pattern pattern = Pattern.compile("filename=\".*\"");
+        Matcher matcher = pattern.matcher(request);
+
+        String filename = "c:\\temp\\default.txt";
+        if (matcher.find())
+        {
+            int i1 = matcher.start();
+            int i2 = matcher.end();
+            filename = request.substring(i1, i2);
+            filename = filename.substring("filename=".length()+1, filename.lastIndexOf('"'));
+            System.out.println(filename);
+        }
+
+        FileOutputStream fos = new FileOutputStream("c:\\temp\\temp" + filename);
+        fos.write(payload.getBytes());
+        fos.flush();
+        fos.close();
+
+
         List<String> headers = new ArrayList<String>();
         headers.add("HTTP/1.1 200 OK\r\n");
-        headers.add("Content-Length: " + content.length() + "\r\n");
+        headers.add("Content-Length: " + request.length() + "\r\n");
         headers.add("Connection: close\r\n\r\n");
         os.write(getBinaryHeaders(headers));
-        os.write(content.getBytes());
+        os.write(request.getBytes());
     }
 
     private void doGet(OutputStream os, String url) throws IOException
@@ -95,6 +126,7 @@ public class Client implements Runnable {
         System.out.println(request);
         System.out.println("---------------------------------------------");
 
+        String originalRequest = request;
         int idx = request.indexOf("\r\n");
         request = request.substring(0, idx);
 
@@ -115,8 +147,7 @@ public class Client implements Runnable {
         }
         else if (method.equalsIgnoreCase("POST"))
         {
-
-            doPost(os);
+            doPost(os, originalRequest);
         }
         else
             returnStatusCode(400, os);
@@ -128,26 +159,31 @@ public class Client implements Runnable {
             OutputStream os = socket.getOutputStream();
 
             ByteArrayOutputStream bs = new ByteArrayOutputStream();
-            byte[] buf = new byte[2048];
+            byte[] buf = new byte[1024*1024]; // 64KB buffer
             byte[] temp;
             int r;
 
             try {
                 do {
-                    if ((r = is.read(buf)) <= 0)
-                        break;
-
-                    bs.write(buf, 0, r);
-                    temp = bs.toByteArray();
-
-                    for (int i = 0; i < temp.length - 3; i++) {
-                        if ((temp[i] == (byte) 13) && (temp[i + 1] == (byte) 10) &&
-                                (temp[i + 2] == (byte) 13) && (temp[i + 3] == (byte) 10)) {
-                            String request = new String(temp, 0, i);
-                            process(request, os);
+                    boolean dataRead = false;
+                    while (is.available()>0)
+                    {
+                        r = is.read(buf);
+                        if (r>0)
+                        {
+                            bs.write(buf, 0, r);
+                            dataRead = true;
                         }
                     }
-                } while (!Thread.currentThread().isInterrupted());
+                    if (dataRead)
+                    {
+                        temp = bs.toByteArray();
+                        String request = new String(temp);
+                        process(request, os);
+                    }
+
+                }
+            while (!Thread.currentThread().isInterrupted());
             } finally {
                 socket.close();
             }
