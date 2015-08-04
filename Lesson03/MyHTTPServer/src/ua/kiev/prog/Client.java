@@ -75,15 +75,27 @@ public class Client implements Runnable {
         String[] fileNames = new String[payloads.length];
         for (int i = 0; i < payloads.length; i++)
             fileNames[i] = getFileName(payloads[i]);
+        int contentLength = 0;
         for (int i=0; i<payloads.length; i++)
         {
             int payLoadBeginIndex = payloads[i].indexOf("\r\n\r\n") + 4;
             if (payLoadBeginIndex!=-1)
+            {
                 payloads[i] = payloads[i].substring(payLoadBeginIndex, payloads[i].length());
+                contentLength+= payloads[i].length();
+            }
+
         }
 
-        FileOutputStream fos = new FileOutputStream("c:\\temp\\result.zip");
-        ZipOutputStream zos = new ZipOutputStream(fos);
+        List<String> headers = new ArrayList<String>();
+        headers.add("HTTP/1.1 201 Created\r\n");
+        headers.add("Content-Length: " + contentLength + "\r\n");
+        headers.add("Connection: close\r\n\r\n");
+        os.write(getBinaryHeaders(headers));
+
+        // ZipOutputStream zos = new ZipOutputStream(os);
+        ZipOutputStream zos = new ZipOutputStream(new FileOutputStream("c:\\temp\\xx.zip"));
+
         for (int i=0; i<payloads.length; i++)
         {
             zos.putNextEntry(new ZipEntry(fileNames[i]));
@@ -91,13 +103,14 @@ public class Client implements Runnable {
             zos.closeEntry();
         }
         zos.flush();
+        zos.close();
 
-        List<String> headers = new ArrayList<String>();
-        headers.add("HTTP/1.1 201 Created\r\n");
-        headers.add("Content-Length: " + request.length() + "\r\n");
-        headers.add("Connection: close\r\n\r\n");
-        os.write(getBinaryHeaders(headers));
-        os.write("OK".getBytes());
+        RandomAccessFile raf = new RandomAccessFile("c:\\temp\\xx.zip", "r");
+        byte[] x = new byte[(int) raf.length()];
+        raf.read(x);
+
+        os.write(x);
+        os.flush();
     }
 
     private void doGet(OutputStream os, String url) throws IOException
