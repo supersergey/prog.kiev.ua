@@ -190,7 +190,7 @@ public class Client implements Runnable {
             DataInputStream in = new DataInputStream(is);
 
             ByteArrayOutputStream bs = new ByteArrayOutputStream();
-            byte[] buf = new byte[64];
+            byte[] buf = new byte[8 * 1024];
                 try {
                     do {
                         int readCount = 1;
@@ -206,6 +206,7 @@ public class Client implements Runnable {
                         // fos.close();
                         String request = new String(temp);
                         process(request, os);
+                        break;
 
                     } while ( (! Thread.currentThread().isInterrupted()));
 
