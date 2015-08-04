@@ -91,8 +91,8 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37453184">
-              <caret line="198" column="46" selection-start-line="198" selection-start-column="46" selection-end-line="198" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.5730337">
+              <caret line="210" column="0" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
               <folding>
                 <element signature="e#3361#3369#0" expanded="true" />
                 <element signature="e#4110#4118#0" expanded="true" />
@@ -668,12 +668,12 @@
       <workItem from="1438627783303" duration="985000" />
       <workItem from="1438628849715" duration="6770000" />
       <workItem from="1438637565355" duration="11964000" />
-      <workItem from="1438682381066" duration="4922000" />
+      <workItem from="1438682381066" duration="5595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83970000" />
+    <option name="totallyTimeSpent" value="84643000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1229,8 +1229,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37453184">
-          <caret line="198" column="46" selection-start-line="198" selection-start-column="46" selection-end-line="198" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.5730337">
+          <caret line="210" column="0" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
           <folding>
             <element signature="e#3361#3369#0" expanded="true" />
             <element signature="e#4110#4118#0" expanded="true" />

@@ -199,18 +199,17 @@ public class Client implements Runnable {
                             bs.write(readCount);
                         }
                         // System.out.println(bs.size());
-                        byte[] temp = bs.toByteArray();
+
                         // FileOutputStream fos = new FileOutputStream("c:\\temp\\request.txt");
                         // fos.write(temp);
                         // fos.flush();
                         // fos.close();
-                        String request = new String(temp);
-                        process(request, os);
                         break;
 
                     } while ( (! Thread.currentThread().isInterrupted()));
-
-
+                    byte[] temp = bs.toByteArray();
+                    String request = new String(temp);
+                    process(request, os);
                 } finally {
                     socket.close();
             }
