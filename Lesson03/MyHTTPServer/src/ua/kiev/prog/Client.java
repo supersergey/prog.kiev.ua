@@ -2,11 +2,14 @@ package ua.kiev.prog;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class Client implements Runnable {
     private Socket socket;
@@ -45,32 +48,56 @@ public class Client implements Runnable {
         return res.toString().getBytes();
     }
 
+    private String getFileName(String source)
+    {
+        int filenameIndex = source.indexOf("filename=\"");
+        int filenameEndIndex = source.indexOf("\"\r\n", filenameIndex);
+        if (filenameIndex == -1 || filenameEndIndex == -1)
+            return null;
+        else
+        return source.substring(filenameIndex + "filename=\"".length(), filenameEndIndex);
+    }
+
     private void doPost(OutputStream os, String request) throws IOException
     {
         // String content = "Test POST reply";
-        int currentIndex = 0;
-        int boundaryIndex = request.indexOf("boundary=") + "boundary=".length();
-        String boundary = request.substring(boundaryIndex, request.indexOf("\r\n", boundaryIndex));
+        String boundary = "";
 
-        currentIndex = boundaryIndex + boundary.length() + 2;
-        currentIndex = request.indexOf(boundary, currentIndex);
-        currentIndex = request.indexOf("\r\n\r\n", currentIndex) + 4;
-        int payLoadBeginIndex = currentIndex;
-        currentIndex = request.indexOf(boundary, currentIndex) - 4;
+        int boundaryStart = request.indexOf("boundary=") + "boundary=".length();
+        if (boundaryStart!=-1)
+            boundary = request.substring(boundaryStart, request.indexOf("\r\n", boundaryStart));
 
-        String payload = request.substring(payLoadBeginIndex, currentIndex);
+        boundary = "--" + boundary;
+        int payloadStart = request.indexOf(boundary);
+        payloadStart += ((boundary).length() + 2);
+        int payloadEnd = request.indexOf(boundary+"--") - 3;
+        String[] payloads = request.substring(payloadStart, payloadEnd).split(boundary);
+        String[] fileNames = new String[payloads.length];
+        for (int i = 0; i < payloads.length; i++)
+            fileNames[i] = getFileName(payloads[i]);
+        for (int i=0; i<payloads.length; i++)
+        {
+            int payLoadBeginIndex = payloads[i].indexOf("\r\n\r\n") + 4;
+            if (payLoadBeginIndex!=-1)
+                payloads[i] = payloads[i].substring(payLoadBeginIndex, payloads[i].length());
+        }
 
-        FileOutputStream fos = new FileOutputStream("c:\\temp\\tempfile.txt");
-        fos.write(payload.getBytes());
-        fos.flush();
-        fos.close();
+        FileOutputStream fos = new FileOutputStream("c:\\temp\\result.zip");
+        ZipOutputStream zos = new ZipOutputStream(fos);
+        for (int i=0; i<payloads.length; i++)
+        {
+            zos.putNextEntry(new ZipEntry(fileNames[i]));
+            zos.write(payloads[i].getBytes(), 0, payloads[i].length());
+            zos.closeEntry();
+        }
+        zos.flush();
 
         List<String> headers = new ArrayList<String>();
-        headers.add("HTTP/1.1 200 OK\r\n");
+        headers.add("HTTP/1.1 201 Created\r\n");
         headers.add("Content-Length: " + request.length() + "\r\n");
         headers.add("Connection: close\r\n\r\n");
         os.write(getBinaryHeaders(headers));
-        os.write(request.getBytes());
+        os.write("OK".getBytes());
     }
 
     private void doGet(OutputStream os, String url) throws IOException
@@ -107,12 +134,12 @@ public class Client implements Runnable {
 
     private void process(String request, OutputStream os) throws IOException {
 
-        FileWriter writer = new FileWriter("c:\\temp\\request.txt");
-        writer.write(request);
-        writer.flush();
-        writer.close();
+        // FileWriter writer = new FileWriter("c:\\temp\\request.txt");
+        // writer.write(request);
+        // writer.flush();
+        // writer.close();
         // System.out.println(request);
-        System.out.println("---------------------------------------------");
+        // System.out.println("---------------------------------------------");
 
         String originalRequest = request;
         int idx = request.indexOf("\r\n");
@@ -141,8 +168,6 @@ public class Client implements Runnable {
             returnStatusCode(400, os);
     }
 
-
-
     public void run() {
         try {
             InputStream is = socket.getInputStream();
@@ -150,26 +175,25 @@ public class Client implements Runnable {
             DataInputStream in = new DataInputStream(is);
 
             ByteArrayOutputStream bs = new ByteArrayOutputStream();
-            byte[] buf = new byte[64 * 1024];
-            // byte[] temp;
-            int readBytesCount;
-
+            byte[] buf = new byte[64];
                 try {
-                    /*do {
-                        readBytesCount = is.read(buf);
-                        if (readBytesCount == -1) {
-                            // no more data left
-                            break;
+                    do {
+                        int readCount = 1;
+                        while ((readCount = in.read()) != -1 && in.available() > 0)
+                        {
+                            bs.write(readCount);
                         }
-                        else
-                            bs.write(buf, 0, readBytesCount);
+                        // System.out.println(bs.size());
+                        byte[] temp = bs.toByteArray();
+                        // FileOutputStream fos = new FileOutputStream("c:\\temp\\request.txt");
+                        // fos.write(temp);
+                        // fos.flush();
+                        // fos.close();
+                        String request = new String(temp);
+                        process(request, os);
 
+                    } while ( (! Thread.currentThread().isInterrupted()));
 
-                    } while ( (! Thread.currentThread().isInterrupted()));*/
-                    byte[] temp = new byte[in.readInt()];
-                    in.readFully(temp);
-                    String request = temp.toString();
-                    process(request, os);
 
                 } finally {
                     socket.close();
