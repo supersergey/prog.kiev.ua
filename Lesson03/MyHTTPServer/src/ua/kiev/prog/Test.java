@@ -12,11 +12,11 @@ public class Test {
     {
 
         byte[] z = new byte[] {(byte) 0x97, (byte) 0x98, (byte) 0x99, (byte) 0x9A};
-        String s = new String(z);
+        String s = new String(z, "UTF-8");
         FileOutputStream f1 = new FileOutputStream("c:\\temp\\f1.txt");
         FileOutputStream f2 = new FileOutputStream("c:\\temp\\f2.txt");
         f1.write(z);
-        f2.write(s.getBytes());
+        f2.write(s.getBytes("UTF-8"));
         f1.close();
         f2.close();
     }
