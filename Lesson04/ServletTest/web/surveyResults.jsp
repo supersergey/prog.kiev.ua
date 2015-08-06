@@ -1,4 +1,6 @@
 <%@ page import="TestServletPackage.TestServlet" %>
+<%@ page import="TestServletPackage.SurveyStatistics" %>
+<%@ page import="java.util.Map" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -9,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Результаты анкетирования</title>
+    <title>Вы указали такие данные:</title>
 </head>
 <body>
 <h1>Результаты анкетирования</h1><br>
@@ -28,6 +30,28 @@
 
 <h2>Возраст: <%=TestServlet.getCurrentSurvey().getAges()%>
 </h2>
+
+<hr width="100%">
+
+<h1>Статистика анкетирования</h1>
+<h2>Всего опрошено участников: </h2><%=SurveyStatistics.getInstance().getNumberOfEntries()%>
+<h2>Статистика имен:</h2>
+<%for(Map.Entry<String, Integer> e : SurveyStatistics.getInstance().getNamesStatistics().entrySet()) {%>
+Имя: <%=e.getKey()%>, количество: <%=e.getValue()%><br>
+<%}%>
+<h2>Статистика напитков:</h2>
+<%for(Map.Entry<String, Integer> e : SurveyStatistics.getInstance().getDrinksStatistics().entrySet()) {%>
+Напиток: <%=e.getKey()%>, количество: <%=e.getValue()%><br>
+<%}%>
+<h2>Статистика музыки:</h2>
+<%for(Map.Entry<String, Integer> e : SurveyStatistics.getInstance().getMusicsStatistics().entrySet()) {%>
+Музыка: <%=e.getKey()%>, количество: <%=e.getValue()%><br>
+<%}%>
+<h2>Статистика возрастов:</h2>
+<%for(Map.Entry<String, Integer> e : SurveyStatistics.getInstance().getAgesStatistics().entrySet()) {%>
+Возраст: <%=e.getKey()%>, количество: <%=e.getValue()%><br>
+<%}%>
+
 
 </body>
 </html>

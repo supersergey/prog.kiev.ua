@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="AnketaGAE:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/AnketaGAE_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="AnketaGAE/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="AnketaGAE" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="AppEngine API" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

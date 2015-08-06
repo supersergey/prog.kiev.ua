@@ -19,9 +19,7 @@ import java.util.Map;
 public class TestServlet extends HttpServlet {
 
     private static SurveyData currentSurvey = new SurveyData();
-    private static SurveyStatistics statistics = SurveyStatistics.getInstance();
-
-    public static int n = 0; // количество участников
+    private SurveyStatistics statistics = SurveyStatistics.getInstance();
 
     public static SurveyData getCurrentSurvey() {
         return currentSurvey;
@@ -60,9 +58,7 @@ public class TestServlet extends HttpServlet {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
 
-        n++;
-
-        statistics.getData().add(currentSurvey);
+        statistics.addSurveyEntry(currentSurvey);
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/surveyResults.jsp");
         dispatcher.forward(request, response);

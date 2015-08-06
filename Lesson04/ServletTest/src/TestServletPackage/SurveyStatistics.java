@@ -1,5 +1,7 @@
 package TestServletPackage;
 
+import sun.misc.Sort;
+
 import java.util.*;
 
 /**
@@ -13,7 +15,7 @@ public class SurveyStatistics {
     private static List<String> musics = new ArrayList<>();
     private static List<String> ages = new ArrayList<>();
 
-    public static void addSurveyEntry(SurveyData entry)
+    public void addSurveyEntry(SurveyData entry)
     {
         names.add(entry.getName());
         drinks.add(entry.getDrinks());
@@ -22,23 +24,42 @@ public class SurveyStatistics {
             musics.add(music);
     }
 
-    public static Map<Integer, String> getStatistics(List<String> field)
+    public int getNumberOfEntries()
     {
-        Set<String> uniqueEntries = new HashSet<>();
-        for (String s : field)
-            uniqueEntries.add(s);
-        for (S)
+        return names.size();
+    }
 
-        HashMap<String, Integer> result = new HashMap<>();
-        List<String> temp = new ArrayList<>();
+    private Map<String, Integer> getStatistics(List<String> field)
+    {
+        Set<String> uniqueEntries = new HashSet<>(field);
+        Map<String, Integer> result = new HashMap<>();
 
-        if (!temp.contains(s))
-            temp.add(s);
-        for (String s : temp)
-        result.put(field.)
-
-
+        for (String s : uniqueEntries)
+        {
+            int occurencies = Collections.frequency(field, s);
+            result.put(s, occurencies);
+        }
         return result;
+    }
+
+    public Map<String, Integer> getNamesStatistics()
+    {
+        return getStatistics(names);
+    }
+
+    public Map<String, Integer> getDrinksStatistics()
+    {
+        return getStatistics(drinks);
+    }
+
+    public Map<String, Integer> getMusicsStatistics()
+    {
+        return getStatistics(musics);
+    }
+
+    public Map<String, Integer> getAgesStatistics()
+    {
+        return getStatistics(ages);
     }
 
     public static SurveyStatistics getInstance() {
