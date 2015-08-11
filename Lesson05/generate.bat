@@ -1,0 +1,1 @@
+mvn archetype:generate -DgroupId=ua.kiev.prog -DartifactId=test-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false

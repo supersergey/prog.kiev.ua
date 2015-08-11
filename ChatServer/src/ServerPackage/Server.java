@@ -3,13 +3,15 @@ package ServerPackage;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.google.gson.GsonBuilder;
+import org.apache.http.util.EntityUtils;
 
 /**
  * Created by user on 11.08.2015.
@@ -32,8 +34,18 @@ public class Server extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        StringBuffer jb = new StringBuffer();
+        String line = null;
+        try {
+            BufferedReader reader = request.getReader();
+            while ((line = reader.readLine()) != null)
+                jb.append(line);
+        } catch (Exception e) { /*report an error*/ }
+
         Gson gson = new Gson();
-        LoginData loginData = gson.fromJson(request.getReader(), LoginData.class);
+        LoginData loginData = gson.fromJson(jb.toString(), LoginData.class);
+
         boolean isValidUser = checkUser(loginData);
         if (isValidUser)
             response.sendError(HttpServletResponse.SC_CREATED);
