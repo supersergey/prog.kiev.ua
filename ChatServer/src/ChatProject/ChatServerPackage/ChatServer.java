@@ -17,11 +17,12 @@ public class ChatServer {
 
     private ChatServer() {
         chatRooms = new HashMap<>();
-        chatRooms.put("default", new ChatRoom("default"));
-        users.put("Server", new User("Server"));
+        ChatRoom defaultChatRoom = new ChatRoom("default");
+        chatRooms.put("default", defaultChatRoom);
+        users.put("Server", new User("Server", defaultChatRoom));
     }
 
-    public ChatRoom getCharRoom(String name)
+    public ChatRoom getChatRoom(String name)
     {
         return chatRooms.get(name);
     }
@@ -29,5 +30,13 @@ public class ChatServer {
     public User getUser(String name)
     {
         return users.get(name);
+    }
+
+    public Map<String, User> getUsers() {
+        return users;
+    }
+
+    public Map<String, ChatRoom> getChatRooms() {
+        return chatRooms;
     }
 }

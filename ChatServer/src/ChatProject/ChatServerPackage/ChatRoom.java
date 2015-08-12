@@ -35,4 +35,12 @@ public class ChatRoom {
     public List<ChatMessage> getMessageList() {
         return messageList;
     }
+
+    public Map<String, User> getMembers() {
+        return members;
+    }
+
+    public void getMembers(Map<String, User> members) {
+        this.members = members;
+    }
 }

@@ -10,9 +10,6 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.gson.GsonBuilder;
-import org.apache.http.util.EntityUtils;
-
 /**
  * Created by user on 11.08.2015.
  */

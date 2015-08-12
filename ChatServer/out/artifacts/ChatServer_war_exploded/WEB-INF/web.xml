@@ -5,7 +5,7 @@
          version="3.1">
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>ChatProject.ChatServerPackage.ServerPackage.LoginServlet</servlet-class>
+        <servlet-class>ChatProject.ChatServerPackage.ServletPackage.LoginServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>Registration</servlet-name>
-        <servlet-class>ChatProject.ChatServerPackage.ServerPackage.RegistrationServlet</servlet-class>
+        <servlet-class>ChatProject.ChatServerPackage.ServletPackage.RegistrationServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -25,11 +25,34 @@
 
     <servlet>
         <servlet-name>GetMessages</servlet-name>
-        <servlet-class>ChatProject.ChatServerPackage.ServerPackage.GetMessagesServlet</servlet-class>
+        <servlet-class>ChatProject.ChatServerPackage.ServletPackage.GetMessagesServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
             <servlet-name>GetMessages</servlet-name>
             <url-pattern>/getmessages</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ExitServlet</servlet-name>
+        <servlet-class>ChatProject.ChatServerPackage.ServletPackage.ExitServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ExitServlet</servlet-name>
+        <url-pattern>/exit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetOnlineUsersServlet</servlet-name>
+        <servlet-class>ChatProject.ChatServerPackage.ServletPackage.GetOnlineUsersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetOnlineUsersServlet</servlet-name>
+        <url-pattern>/getonlineusers</url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>
