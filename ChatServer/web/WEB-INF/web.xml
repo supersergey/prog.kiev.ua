@@ -4,12 +4,32 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <servlet>
-        <servlet-name>Server</servlet-name>
-        <servlet-class>ServerPackage.Server</servlet-class>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>ChatProject.ChatServerPackage.ServerPackage.LoginServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>Server</servlet-name>
+        <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Registration</servlet-name>
+        <servlet-class>ChatProject.ChatServerPackage.ServerPackage.RegistrationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Registration</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetMessages</servlet-name>
+        <servlet-class>ChatProject.ChatServerPackage.ServerPackage.GetMessagesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+            <servlet-name>GetMessages</servlet-name>
+            <url-pattern>/getmessages</url-pattern>
     </servlet-mapping>
 </web-app>

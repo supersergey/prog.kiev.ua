@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: user
+  ChatProject.ChatServerPackage.User: user
   Date: 11.08.2015
   Time: 16:31
   To change this template use File | Settings | File Templates.
