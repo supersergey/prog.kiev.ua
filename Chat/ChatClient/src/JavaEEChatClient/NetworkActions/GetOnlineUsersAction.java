@@ -32,32 +32,29 @@ public class GetOnlineUsersAction implements Runnable {
     @Override
     public void run() {
         Gson gson = new GsonBuilder().create();
+        CloseableHttpClient httpClient = ChatHttpClient.getClient();
 
-        while (!thread.interrupted())
-        {
-            try
-            {
-                CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-                URI uri = new URIBuilder(ServerURL.ServerURL+"/getonlineusers").build();
-                HttpGet httpGet = new HttpGet(uri);
-                HttpResponse response = httpClient.execute(httpGet);
+        try {
+            URI uri = new URIBuilder(ServerURL.ServerURL + "/getonlineusers").build();
+            while (!Thread.interrupted()) {
+
+/*                HttpGet httpGet = new HttpGet(uri);
                 StringBuilder sb = new StringBuilder();
+                HttpResponse response = httpClient.execute(httpGet);
                 BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
                 while (br.ready())
                     sb.append(br.readLine());
                 UsersJSON usersJSON = gson.fromJson(sb.toString(), UsersJSON.class);
                 MainGUI.getInstance().getUsersOnlinePane().clearUsers();
-                for (UserJSON userJSON : usersJSON.getUsers())
-                {
+                for (UserJSON userJSON : usersJSON.getUsers()) {
                     String username = userJSON.getName();
                     MainGUI.getInstance().getUsersOnlinePane().addUser(username);
-                }
+                }*/
                 Thread.sleep(3000);
             }
-            catch (IOException | InterruptedException | URISyntaxException ex)
-            {
-                ex.printStackTrace();
-            }
+        } // catch (IOException | InterruptedException | URISyntaxException ex) {
+        catch (Exception ex) {
+        ex.printStackTrace();
         }
     }
 }

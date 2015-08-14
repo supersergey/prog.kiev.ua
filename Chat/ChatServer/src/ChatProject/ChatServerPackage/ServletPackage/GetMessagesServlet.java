@@ -54,9 +54,10 @@ public class GetMessagesServlet extends HttpServlet {
                 messageJSON.setDate(sdf.format(m.getTimestamp()));
                 messagesJSON.getMessages().add(messageJSON);
             }
-            String JSONresponse = "";
-            JSONresponse = reply.toJson(messagesJSON, MessagesJSON.class);
-            response.getWriter().print(JSONresponse);
+
+            String JSONresponse = reply.toJson(messagesJSON, MessagesJSON.class);
+            byte[] result = JSONresponse.getBytes("UTF-8");
+            response.getOutputStream().write(result);
         }
     }
 }

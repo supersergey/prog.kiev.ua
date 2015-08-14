@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
  */
 public class PostMessageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         BufferedReader br = new BufferedReader(request.getReader());
         StringBuilder sb = new StringBuilder();
         while (br.ready())

@@ -48,7 +48,7 @@ public class LoginAction implements ActionListener {
         if (null == login || login.isEmpty() || password.isEmpty())
             return false;
         else try {
-            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            CloseableHttpClient httpClient = ChatHttpClient.getClient();
             HttpPost request = new HttpPost(ServerURL.ServerURL+"/login");
             Gson loginJson = new Gson();
             String jsonRequest = loginJson.toJson(new LoginData(login, password));
@@ -57,7 +57,6 @@ public class LoginAction implements ActionListener {
             request.addHeader("content-type", "application/json");
 
             org.apache.http.HttpResponse response = httpClient.execute(request);
-            httpClient.close();
             return response.getStatusLine().getStatusCode() == 200;
         } catch (IOException ignored) {
             ignored.printStackTrace();

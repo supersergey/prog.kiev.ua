@@ -15,7 +15,6 @@ import java.io.IOException;
 /**
  * Created by sergey on 12.08.2015.
  */
-@WebServlet(name = "ExitServlet")
 public class ExitServlet extends HttpServlet {
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

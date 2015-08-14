@@ -17,12 +17,11 @@ public class ExitAction {
 
     public static void doExitGet() {
         try {
-            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            CloseableHttpClient httpClient = ChatHttpClient.getClient();
             URI uri = new URIBuilder(ServerURL.ServerURL+"/exit").addParameter("name", ChatClient.getCurrentUser().getName())
                     .addParameter("room", ChatClient.getCurrentUser().getCurrentRoom()).build();
             HttpDelete httpDelete = new HttpDelete(uri);
             httpClient.execute(httpDelete);
-            httpClient.close();
         } catch (URISyntaxException | IOException ex) {
             ex.printStackTrace();
         }

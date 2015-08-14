@@ -42,12 +42,12 @@ public class LoginServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
     }
 
-/*    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter pw = response.getWriter();
         pw.write("Hello");
         pw.flush();
-    }*/
+    }
 
 
 }

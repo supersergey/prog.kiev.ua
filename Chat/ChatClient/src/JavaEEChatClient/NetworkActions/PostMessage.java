@@ -5,12 +5,16 @@ import JSON.MessagesJSON;
 import JavaEEChatClient.ChatClient;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.BasicHttpEntity;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -28,18 +32,18 @@ public class PostMessage {
         messageJSON.setDate(sdf.format(new Date()));
         messagesJSON.getMessages().add(messageJSON);
         Gson json = new GsonBuilder().create();
-        String jsonRequest = json.toJson(messageJSON, MessageJSON.class);
-
-        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost request = new HttpPost(ServerURL.ServerURL+"/postmessage");
-        StringEntity entity = new StringEntity(jsonRequest, "UTF-8");
-        entity.setContentEncoding("UTF-8");
-        request.setEntity(entity);
-        request.addHeader("content-type", "application/json");
-
         try {
+            byte[] jsonRequest = json.toJson(messageJSON, MessageJSON.class).getBytes("UTF-8");
+
+            CloseableHttpClient httpClient = ChatHttpClient.getClient();
+            HttpPost request = new HttpPost(ServerURL.ServerURL + "/postmessage");
+
+            HttpEntity entity = new ByteArrayEntity(jsonRequest);
+            request.setEntity(entity);
+            request.addHeader("content-type", "application/json");
+
             org.apache.http.HttpResponse response = httpClient.execute(request);
-            httpClient.close();
+            int a = 0;
         } catch (IOException ex) {
             ex.printStackTrace();
         }
