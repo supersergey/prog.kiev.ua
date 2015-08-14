@@ -13,6 +13,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,6 +30,8 @@ public class AllMessagesPane {
     AllMessagesPane() {
 
         allMessagesPane.setEditable(false);
+        DefaultCaret caret = (DefaultCaret)allMessagesPane.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
         JFrame mainFrame = MainGUI.getInstance().getMainFrame();
         mainFrame.add(new JScrollPane(allMessagesPane), BorderLayout.CENTER);

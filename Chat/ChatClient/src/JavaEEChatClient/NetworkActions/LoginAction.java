@@ -4,6 +4,7 @@ import JavaEEChatClient.ChatClient;
 import JavaEEChatClient.GUI.LoginGUI;
 import JavaEEChatClient.User;
 import com.google.gson.Gson;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -48,19 +49,21 @@ public class LoginAction implements ActionListener {
         if (null == login || login.isEmpty() || password.isEmpty())
             return false;
         else try {
-            CloseableHttpClient httpClient = ChatHttpClient.getClient();
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost request = new HttpPost(ServerURL.ServerURL+"/login");
-            Gson loginJson = new Gson();
-            String jsonRequest = loginJson.toJson(new LoginData(login, password));
-            StringEntity entity = new StringEntity(jsonRequest, "UTF-8");
+            Gson gson = new Gson();
+            String requestJSON = gson.toJson(new LoginData(login, password));
+            StringEntity entity = new StringEntity(requestJSON, "UTF-8");
             request.setEntity(entity);
             request.addHeader("content-type", "application/json");
-
-            org.apache.http.HttpResponse response = httpClient.execute(request);
-            return response.getStatusLine().getStatusCode() == 200;
-        } catch (IOException ignored) {
-            ignored.printStackTrace();
+            CloseableHttpResponse response = httpClient.execute(request);
+            httpClient.close();
+            int statusCode = response.getStatusLine().getStatusCode();
+            response.close();
+            return statusCode == 200;
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        return true;
+        return false;
     }
 }

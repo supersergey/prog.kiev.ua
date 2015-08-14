@@ -18,9 +18,9 @@ public class PrivateMessagesPane extends KeyAdapter {
 
     PrivateMessagesPane()
     {
-        privateMessages = new JTextArea();
+        privateMessages = new JTextArea(5, 100);
         privateMessages.setEditable(true);
-        privateMessages.setPreferredSize(new Dimension(500, 200));
+        privateMessages.setPreferredSize(new Dimension(500, 1400));
         privateMessages.addKeyListener(this);
 
         JFrame mainFrame = MainGUI.getInstance().getMainFrame();
