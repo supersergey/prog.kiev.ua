@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="ChatServer:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ChatServer_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ChatServer/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="javaee-facet-classes" facet="ChatServer/web/Web" />
+          <element id="module-output" name="ChatServer" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
