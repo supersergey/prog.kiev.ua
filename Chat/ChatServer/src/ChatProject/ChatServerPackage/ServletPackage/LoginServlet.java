@@ -4,6 +4,7 @@ import ChatProject.ChatServerPackage.ChatRoom;
 import ChatProject.ChatServerPackage.ChatServer;
 import ChatProject.ChatServerPackage.ChatMessage;
 import ChatProject.ChatServerPackage.User;
+import JSON.LoginJSON;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-
 
 /**
  * Created by user on 11.08.2015.
@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String loginPasswordJSON = CommonOperations.getLoginPasswordJSON(request);
         Gson gson = new Gson();
-        LoginData loginData = gson.fromJson(loginPasswordJSON, LoginData.class);
+        LoginJSON loginData = gson.fromJson(loginPasswordJSON, LoginJSON.class);
 
         boolean isValidUser = CommonOperations.isUserRegistered(loginData);
         if (isValidUser)
@@ -31,11 +31,10 @@ public class LoginServlet extends HttpServlet {
             ChatRoom defaultRoom = ChatServer.getInstance().getChatRoom("default");
             if (null!=defaultRoom)
             {
-                ChatMessage welcomeMessage = new ChatMessage(ChatServer.getInstance().getUser("Server"), "User " + loginData.getLogin() + " has joined this chatroom.");
+                ChatMessage welcomeMessage = new ChatMessage(new User("Server", defaultRoom), "User " + loginData.getLogin() + " has joined this chatroom.");
                 defaultRoom.addMessage(welcomeMessage);
                 User newUser = new User(loginData.getLogin(), defaultRoom);
                 defaultRoom.addMember(newUser);
-                ChatServer.getInstance().getUsers().put(newUser.getName(), newUser);
             }
         }
         else

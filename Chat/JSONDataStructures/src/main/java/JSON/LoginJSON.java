@@ -1,18 +1,18 @@
-package ChatProject.ChatServerPackage.ServletPackage;
+package JSON;
 
 /**
  * Created by user on 11.08.2015.
- */
-public class LoginData {
+*/
+public class LoginJSON {
     private String login;
     private String password;
 
-    public LoginData(String login, String password) {
+    public LoginJSON(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
-    public LoginData() {
+    public LoginJSON() {
     }
 
     public String getLogin() {

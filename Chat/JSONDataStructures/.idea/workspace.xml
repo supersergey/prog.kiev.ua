@@ -6,7 +6,47 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4841753-527c-4cb8-b381-975eb33286d6" name="Default" comment="" />
+    <list default="true" id="f4841753-527c-4cb8-b381-975eb33286d6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/BasicWindow.form" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/BasicWindow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ChatClient/.idea/libraries/Maven__ua_kiev_prog_JSONDataStructures_0_0_2.xml" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatClient\src\JavaEEChatClient\ChatConnection.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatClient\src\JavaEEChatClient\ChatRoom.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatClient\src\JavaEEChatClient\User.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ChatMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ChatRoom.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ChatServer.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\CommonOperations.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\ExitServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\GetMessagesServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\GetOnlineUsersServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\LoginData.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\LoginServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\PostMessageServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\RegistrationServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\UsersDB.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\User.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ServerPackage\Server.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.gitignore" afterPath="$PROJECT_DIR$/../../.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/ChatClient.iml" afterPath="$PROJECT_DIR$/../ChatClient/ChatClient.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/ChatClient.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/ChatClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/ChatServer.iml" afterPath="$PROJECT_DIR$/../ChatServer/ChatServer.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/src/ChatProject/ChatServerPackage/ChatServer.java" afterPath="$PROJECT_DIR$/../ChatServer/src/ChatProject/ChatServerPackage/ChatServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/.idea/artifacts/ChatServer_Web_exploded.xml" afterPath="$PROJECT_DIR$/../ChatServer/.idea/artifacts/ChatServer_Web_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/src/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java" afterPath="$PROJECT_DIR$/../ChatServer/src/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/src/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java" afterPath="$PROJECT_DIR$/../ChatServer/src/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/.idea/libraries/Maven__ua_kiev_prog_JSONDataStructures_0_0_2.xml" afterPath="$PROJECT_DIR$/../ChatServer/.idea/libraries/Maven__ua_kiev_prog_JSONDataStructures_0_0_2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/src/ServerPackage/Server.java" afterPath="$PROJECT_DIR$/../ChatServer/src/ServerPackage/Server.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/.idea/encodings.xml" afterPath="$PROJECT_DIR$/../ChatServer/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/.idea/misc.xml" afterPath="$PROJECT_DIR$/../ChatServer/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/pom.xml" afterPath="$PROJECT_DIR$/../ChatClient/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/pom.xml" afterPath="$PROJECT_DIR$/../ChatServer/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../ChatClient/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatServer/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../ChatServer/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ServletPackage\LoginData.java" afterPath="$PROJECT_DIR$/src/main/java/JSON/LoginJSON.java" />
+    </list>
     <ignored path="JSONDataStructures.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -38,8 +78,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45945945">
-              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.48456058">
+              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -53,6 +93,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -98,10 +141,6 @@
           <option name="myItemId" value="JSONDataStructures" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -128,10 +167,10 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1296" />
+    <option name="height" value="1000" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -155,6 +194,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -186,38 +227,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JSONDataStructures" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JSONDataStructures" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JSONDataStructures" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JSONDataStructures" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -231,10 +240,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JSONDataStructures" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JSONDataStructures" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -245,9 +266,10 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../FlatsDB" />
     <property name="dynamic.classpath" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -528,6 +550,9 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f4841753-527c-4cb8-b381-975eb33286d6" name="Default" comment="" />
@@ -539,25 +564,26 @@
       <workItem from="1439565531225" duration="122000" />
       <workItem from="1439809046491" duration="21000" />
       <workItem from="1439823773535" duration="3892000" />
+      <workItem from="1439839146157" duration="52000" />
+      <workItem from="1439840369419" duration="1901000" />
+      <workItem from="1439929588990" duration="85000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10924000" />
+    <option name="totallyTimeSpent" value="12962000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34101748" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32972974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -566,14 +592,24 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -587,11 +623,34 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/JSON/MessageJSON.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/JSON/MessageJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -599,7 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -607,7 +665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -615,7 +672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -623,7 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6891892">
           <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -637,17 +692,18 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="69.5" y="15.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="70.0" y="15.0" />
           <SelectedNodes />
           <Categories />
+          <SCOPE>All</SCOPE>
           <VISIBILITY>All</VISIBILITY>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45945945">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.48456058">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
           <folding />
         </state>
       </provider>

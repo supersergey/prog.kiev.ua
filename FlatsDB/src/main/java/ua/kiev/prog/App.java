@@ -34,11 +34,29 @@ public class App {
 
     public static void main(String[] args) {
         Connection conn = getDBConnection();
+
         if (conn == null) {
             System.out.println("Error creating connection!");
             return;
         }
         try {
+
+            DatabaseMetaData meta = conn.getMetaData();
+            ResultSet res = meta.getTables(null, null, "Flats",
+                    new String[] {"TABLE"});
+            if (!res.next())
+            {
+                Statement createStatement = conn.createStatement();
+                createStatement.executeUpdate("CREATE TABLE Flats (\n" +
+                        "Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,\n" +
+                        "District VARCHAR(100) NOT NULL,\n" +
+                        "Address VARCHAR(100) NOT NULL,\n" +
+                        "Square DOUBLE NOT NULL,\n" +
+                        "RoomsNumber INT NOT NULL,\n" +
+                        "Price DEC(20,2) NOT NULL\n" +
+                        ");");
+            }
+
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String s = "";
             PreparedStatement ps = conn.prepareStatement("INSERT INTO Flats (district, address, square, roomsNumber, price) VALUES(?, ?, ?, ?, ?)");
@@ -70,11 +88,12 @@ public class App {
             ps = conn.prepareStatement("SELECT * FROM Flats");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                System.out.print("Район: " + rs.getString(0));
-                System.out.print("Адрес: " + rs.getString(1));
-                System.out.print("Площадь: " + rs.getDouble(2));
-                System.out.print("Кол-во комнат: " + +rs.getInt(3));
-                System.out.print("Цена: " + rs.getDouble(4));
+                System.out.println("Район: " + rs.getString(2));
+                System.out.println("Адрес: " + rs.getString(3));
+                System.out.println("Площадь: " + rs.getDouble(4));
+                System.out.println("Кол-во комнат: " + +rs.getInt(5));
+                System.out.println("Цена: " + rs.getDouble(6));
+                System.out.println("====================");
             }
             rs.close();
             ps.close();

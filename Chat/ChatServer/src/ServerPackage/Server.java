@@ -1,12 +1,8 @@
 package ServerPackage;
 
 import ChatProject.ChatServerPackage.ServletPackage.LoginData;
-import com.google.gson.Gson;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +27,7 @@ public class Server extends HttpServlet {
             br.close();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         StringBuffer jb = new StringBuffer();
         String line = null;
@@ -39,7 +35,7 @@ public class Server extends HttpServlet {
             BufferedReader reader = request.getReader();
             while ((line = reader.readLine()) != null)
                 jb.append(line);
-        } catch (Exception e) { /*report an error*/ }
+        } catch (Exception e) {  }
 
         Gson gson = new Gson();
         LoginData loginData = gson.fromJson(jb.toString(), LoginData.class);
@@ -67,5 +63,5 @@ public class Server extends HttpServlet {
             if (users.get(login).equals(password))
                 return true;
         return false;
-    }
+    }*/
 }

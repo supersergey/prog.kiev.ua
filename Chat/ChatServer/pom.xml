@@ -28,7 +28,7 @@
     <repositories>
         <repository>
             <id>JSONDataStructures</id>
-            <url>file:\\d:\\Java Projects\\prog.kiev.ua\\Chat\\lib\\JSONDataStructures.0.0.2.jar</url>
+            <url>file:\\g:\\My Java Projects\\prog.kiev.ua\\Chat\\lib\\JSONDataStructures.0.0.2.jar</url>
         </repository>
     </repositories>
 

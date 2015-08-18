@@ -8,6 +8,11 @@
           <element id="javaee-facet-classes" facet="ChatServer/web/Web" />
           <element id="module-output" name="ChatServer" />
         </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.3.1/gson-2.3.1.jar" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/ua/kiev/prog/JSONDataStructures/0.0.2/JSONDataStructures-0.0.2.JAR" />
+        </element>
       </element>
     </root>
   </artifact>
