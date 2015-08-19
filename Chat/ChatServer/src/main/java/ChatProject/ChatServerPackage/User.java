@@ -10,10 +10,19 @@ public class User {
     private String name;
     private List<ChatMessage> privateMessages = new ArrayList<>();
     private ChatRoom currentRoom;
+    private boolean visible;
 
     public User(String name, ChatRoom currentRoom) {
         this.name = name;
         this.currentRoom = currentRoom;
+        this.visible = true;
+    }
+
+    public User(String name, ChatRoom currentRoom, boolean visible) {
+        this.name = name;
+        this.privateMessages = privateMessages;
+        this.currentRoom = currentRoom;
+        this.visible = visible;
     }
 
     public String getName() {

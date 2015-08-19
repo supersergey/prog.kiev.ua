@@ -19,21 +19,34 @@ import java.io.IOException;
  */
 public class GetOnlineUsersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UsersJSON usersJSON = new UsersJSON();
-        for (ChatRoom room : ChatServer.getInstance().getChatRooms().values())
+        String requestedChatRoom = request.getParameter("chatroom");
+        String requestedUser = request.getParameter("username");
+
+        ChatRoom chatRoom = ChatServer.getInstance().getChatRoom(requestedChatRoom);
+        if (null==chatRoom)
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        else
+        if (null==chatRoom.getMember(requestedUser))
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        else
         {
-            for (User user : room.getOnlineMembers().values())
+            UsersJSON usersJSON = new UsersJSON();
+            for (ChatRoom room : ChatServer.getInstance().getChatRooms().values())
             {
-                UserJSON userJSON = new UserJSON();
-                userJSON.setName(user.getName());
-                usersJSON.getUsers().add(userJSON);
+                for (User user : room.getOnlineMembers().values())
+                {
+                    UserJSON userJSON = new UserJSON();
+                    userJSON.setName(user.getName());
+                    usersJSON.getUsers().add(userJSON);
+                }
             }
+            Gson gson = new GsonBuilder().create();
+            String responseJSON = gson.toJson(usersJSON, UsersJSON.class);
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json");
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.getWriter().write(responseJSON);
         }
-        Gson gson = new GsonBuilder().create();
-        String responseJSON = gson.toJson(usersJSON, UsersJSON.class);
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().write(responseJSON);
+
     }
 }

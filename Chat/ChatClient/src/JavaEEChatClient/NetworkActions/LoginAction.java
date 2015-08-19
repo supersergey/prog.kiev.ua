@@ -1,8 +1,9 @@
 package JavaEEChatClient.NetworkActions;
 
+import JSON.LoginJSON;
 import JavaEEChatClient.ChatClient;
+import JavaEEChatClient.CommonClasses.User;
 import JavaEEChatClient.GUI.LoginGUI;
-import JavaEEChatClient.User;
 import com.google.gson.Gson;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -52,7 +53,7 @@ public class LoginAction implements ActionListener {
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost request = new HttpPost(ServerURL.ServerURL+"/login");
             Gson gson = new Gson();
-            String requestJSON = gson.toJson(new LoginData(login, password));
+            String requestJSON = gson.toJson(new LoginJSON(login, password));
             StringEntity entity = new StringEntity(requestJSON, "UTF-8");
             request.setEntity(entity);
             request.addHeader("content-type", "application/json");

@@ -27,15 +27,7 @@ public class GetMessagesAction implements Runnable {
     public GetMessagesAction() {
 
         thread = new Thread(this, "All messages reader thread");
-        try {
-            URI uri = new URIBuilder(ServerURL.ServerURL + "/getmessages").addParameter("user", ChatClient.getCurrentUser().getName()).addParameter("room", "default").build();
-            // String uri = "http://localhost:8080/login";
-            getMethod = new HttpGet(uri);
-        } catch (URISyntaxException ex) {
-            ex.printStackTrace();
-        } finally {
-            thread.start();
-        }
+        thread.start();
     }
 
     @Override
@@ -46,6 +38,10 @@ public class GetMessagesAction implements Runnable {
 
         while (!Thread.interrupted()) {
             try {
+
+                URI uri = new URIBuilder(ServerURL.ServerURL + "/getmessages").addParameter("user", ChatClient.getCurrentUser().getName()).addParameter("room", ChatClient.getCurrentUser().getChatRoom()).build();
+                getMethod = new HttpGet(uri);
+
                 CloseableHttpResponse response = httpClient.execute(getMethod);
                 if (null != response) {
                     if (response.getStatusLine().getStatusCode() == 200) {
@@ -66,7 +62,7 @@ public class GetMessagesAction implements Runnable {
                     response.close();
                 }
                 Thread.sleep(3000);
-            } catch (IOException | InterruptedException ex) {
+            } catch (IOException | URISyntaxException | InterruptedException ex) {
                 ex.printStackTrace();
             }
         }

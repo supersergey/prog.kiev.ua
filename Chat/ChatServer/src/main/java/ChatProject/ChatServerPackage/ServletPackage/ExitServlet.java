@@ -20,13 +20,17 @@ public class ExitServlet extends HttpServlet {
         String name = request.getParameter("name");
         String room = request.getParameter("room");
         ChatRoom chatRoom = ChatServer.getInstance().getChatRoom(room);
-        if (chatRoom.removeUser(name))
+        if (null!=chatRoom)
         {
-            chatRoom.addMessage(new ChatMessage(new User("Server", chatRoom), "User " + name + " has left."));
-            response.setStatus(HttpServletResponse.SC_OK);
+            if (chatRoom.removeMember(name))
+            {
+                chatRoom.addMessage(new ChatMessage(new User("Server", chatRoom), "User " + name + " has left."));
+                response.setStatus(HttpServletResponse.SC_OK);
+            }
+            else
+                response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
         }
         else
             response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
-
     }
 }

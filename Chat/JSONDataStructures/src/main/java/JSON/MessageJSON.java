@@ -7,8 +7,23 @@ public class MessageJSON {
     private String name;
     private String body;
     private String date;
+    private String chatRoom;
 
     public MessageJSON() {
+    }
+
+    public MessageJSON(String name, String body, String date) {
+        this.name = name;
+        this.body = body;
+        this.date = date;
+        this.chatRoom = "";
+    }
+
+    public MessageJSON(String name, String body, String date, String chatRoom) {
+        this.name = name;
+        this.body = body;
+        this.date = date;
+        this.chatRoom = chatRoom;
     }
 
     public String getName() {
@@ -33,5 +48,13 @@ public class MessageJSON {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getChatRoom() {
+        return chatRoom;
+    }
+
+    public void setChatRoom(String chatRoom) {
+        this.chatRoom = chatRoom;
     }
 }

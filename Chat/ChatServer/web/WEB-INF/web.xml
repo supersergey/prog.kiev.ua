@@ -63,6 +63,16 @@
         <url-pattern>/postmessage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ChangeRoomServlet</servlet-name>
+        <servlet-class>ChatProject.ChatServerPackage.ServletPackage.ChangeRoomServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangeRoomServlet</servlet-name>
+        <url-pattern>/changeroom</url-pattern>
+    </servlet-mapping>
+
 
 
 </web-app>

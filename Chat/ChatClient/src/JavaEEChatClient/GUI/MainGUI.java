@@ -13,7 +13,7 @@ public class MainGUI {
     private static MainGUI ourInstance = new MainGUI();
     private ChatRoomsPane chatRoomsPane;
     private UsersOnlinePane usersOnlinePane;
-    private PrivateMessagesPane privateMessagesPane;
+    private OutgoingMessagesPane outgoingMessagesPane;
     private AllMessagesPane allMessagesPane;
     private JFrame mainFrame;
 
@@ -36,7 +36,7 @@ public class MainGUI {
 
         chatRoomsPane = new JavaEEChatClient.GUI.ChatRoomsPane();
         usersOnlinePane = new JavaEEChatClient.GUI.UsersOnlinePane();
-        privateMessagesPane = new JavaEEChatClient.GUI.PrivateMessagesPane();
+        outgoingMessagesPane = new OutgoingMessagesPane();
         allMessagesPane = new JavaEEChatClient.GUI.AllMessagesPane();
 
         // new LoginPane();
@@ -71,8 +71,8 @@ public class MainGUI {
         return usersOnlinePane;
     }
 
-    public PrivateMessagesPane getPrivateMessagesPane() {
-        return privateMessagesPane;
+    public OutgoingMessagesPane getOutgoingMessagesPane() {
+        return outgoingMessagesPane;
     }
 
     public AllMessagesPane getAllMessagesPane() {

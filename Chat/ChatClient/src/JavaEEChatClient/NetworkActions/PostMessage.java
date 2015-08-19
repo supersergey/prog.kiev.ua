@@ -21,17 +21,16 @@ import java.util.Date;
 public class PostMessage {
 
     public static void doPost(String postMessage) {
-        MessagesJSON messagesJSON = new MessagesJSON();
         MessageJSON messageJSON = new MessageJSON();
         messageJSON.setBody(postMessage);
         messageJSON.setName(ChatClient.getCurrentUser().getName());
+        messageJSON.setChatRoom(ChatClient.getCurrentUser().getChatRoom());
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM HH:mm");
         messageJSON.setDate(sdf.format(new Date()));
-        messagesJSON.getMessages().add(messageJSON);
         Gson json = new GsonBuilder().create();
         try {
             byte[] jsonRequest = json.toJson(messageJSON, MessageJSON.class).getBytes("UTF-8");
-
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost request = new HttpPost(ServerURL.ServerURL + "/postmessage");
             HttpEntity entity = new ByteArrayEntity(jsonRequest);
@@ -39,7 +38,6 @@ public class PostMessage {
             request.addHeader("content-type", "application/json");
             httpClient.execute(request);
             httpClient.close();
-            int a = 0;
         } catch (IOException ex) {
             ex.printStackTrace();
         }

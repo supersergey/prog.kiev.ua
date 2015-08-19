@@ -2,45 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2a815ed-6826-4a8e-ad24-e1fda53a29a1" name="Default" comment="JavaChat">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/BasicWindow.form" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/BasicWindow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ChatClient/.idea/libraries/Maven__ua_kiev_prog_JSONDataStructures_0_0_2.xml" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatClient\src\JavaEEChatClient\ChatConnection.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatClient\src\JavaEEChatClient\ChatRoom.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatClient\src\JavaEEChatClient\User.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ChatMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ChatRoom.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ChatServer.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\CommonOperations.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\ExitServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\GetMessagesServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\GetOnlineUsersServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\LoginData.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\LoginServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\PostMessageServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\RegistrationServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\UsersDB.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\User.java" afterPath="" />
-      <change type="DELETED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ServerPackage\Server.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.gitignore" afterPath="$PROJECT_DIR$/../../.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/ChatClient.iml" afterPath="$PROJECT_DIR$/../ChatClient/ChatClient.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/ChangeChatRoomAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/ChangeRoomServlet.java" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatClient\src\JavaEEChatClient\NetworkActions\LoginData.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ChatMessage.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ChatRoom.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ChatServer.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ServletPackage\CommonOperations.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ServletPackage\ExitServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ServletPackage\GetMessagesServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ServletPackage\GetOnlineUsersServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ServletPackage\LoginServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ServletPackage\PostMessageServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ServletPackage\RegistrationServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ServletPackage\UsersDB.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\User.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\ServerPackage\Server.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ChatProject\ChatServerPackage\ServletPackage\LoginData.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatServer\src\main\java\ServerPackage\Server.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/ChatClient.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/ChatClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChatServer.iml" afterPath="$PROJECT_DIR$/ChatServer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ChatServer.java" afterPath="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ChatServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/ChatServer_Web_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/ChatServer_Web_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java" afterPath="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java" afterPath="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ua_kiev_prog_JSONDataStructures_0_0_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ua_kiev_prog_JSONDataStructures_0_0_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ServerPackage/Server.java" afterPath="$PROJECT_DIR$/src/ServerPackage/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatRoom.java" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatRoom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatServer.java" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/ExitAction.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/ExitAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/ExitServlet.java" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/ExitServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/GetMessagesAction.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/GetMessagesAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/GetOnlineUsersAction.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/GetOnlineUsersAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/GetOnlineUsersServlet.java" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/GetOnlineUsersServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/LoginAction.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/LoginAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/ChatServer_Web_exploded/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/out/artifacts/ChatServer_Web_exploded/META-INF/MANIFEST.MF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/GUI/MainGUI.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/GUI/MainGUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../JSONDataStructures/src/main/java/JSON/MessageJSON.java" afterPath="$PROJECT_DIR$/../JSONDataStructures/src/main/java/JSON/MessageJSON.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../JSONDataStructures/src/main/java/JSON/MessagesJSON.java" afterPath="$PROJECT_DIR$/../JSONDataStructures/src/main/java/JSON/MessagesJSON.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/PostMessage.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/PostMessage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/PostMessageServlet.java" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/PostMessageServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/RegistrationAction.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/NetworkActions/RegistrationAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/RegistrationServlet.java" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/RegistrationServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/CommonClasses/User.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/CommonClasses/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/User.java" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/UsersDB.java" afterPath="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/UsersDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/.idea/compiler.xml" afterPath="$PROJECT_DIR$/../ChatClient/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/pom.xml" afterPath="$PROJECT_DIR$/../ChatClient/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../JSONDataStructures/.idea/vcs.xml" afterPath="$PROJECT_DIR$/../JSONDataStructures/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatClient/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../ChatClient/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../JSONDataStructures/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../JSONDataStructures/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="G:\My Java Projects\prog.kiev.ua\Chat\ChatServer\src\ChatProject\ChatServerPackage\ServletPackage\LoginData.java" afterPath="$PROJECT_DIR$/../JSONDataStructures/src/main/java/JSON/LoginJSON.java" />
+      <change type="MOVED" beforePath="D:\Java Projects\prog.kiev.ua\Chat\ChatClient\src\JavaEEChatClient\GUI\PrivateMessagesPane.java" afterPath="$PROJECT_DIR$/../ChatClient/src/JavaEEChatClient/GUI/OutgoingMessagesPane.java" />
     </list>
     <ignored path="ChatServer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,37 +76,37 @@
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+              <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/User.java">
+      <file leaf-file-name="LoginServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExitServlet.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/ExitServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51792115">
-              <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetMessagesServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/GetMessagesServlet.java">
+      <file leaf-file-name="ExitServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/ExitServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+              <caret line="16" column="46" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChangeRoomServlet.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/ChangeRoomServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.0838926">
+              <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -106,68 +114,74 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ServerPackage/Server.java">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommonOperations.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+              <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ChatServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ChatServer.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatServer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+              <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
               <folding>
-                <element signature="e#383#384#0" expanded="true" />
-                <element signature="e#417#418#0" expanded="true" />
-                <element signature="e#720#721#0" expanded="true" />
-                <element signature="e#762#763#0" expanded="true" />
-                <element signature="e#970#971#0" expanded="true" />
-                <element signature="e#1002#1003#0" expanded="true" />
+                <element signature="e#326#327#0" expanded="true" />
+                <element signature="e#360#361#0" expanded="true" />
+                <element signature="e#881#882#0" expanded="true" />
+                <element signature="e#931#932#0" expanded="true" />
+                <element signature="e#982#983#0" expanded="true" />
+                <element signature="e#1014#1015#0" expanded="true" />
+                <element signature="e#1382#1383#0" expanded="true" />
+                <element signature="e#1429#1430#0" expanded="true" />
+                <element signature="e#1739#1740#0" expanded="true" />
+                <element signature="e#1796#1797#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetOnlineUsersServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/GetOnlineUsersServlet.java">
+      <file leaf-file-name="GetMessagesServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/GetMessagesServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetOnlineUsersServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/GetOnlineUsersServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommonOperations.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostMessageServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/PostMessageServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -199,16 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ServerPackage/UserDB.java" />
-        <option value="$PROJECT_DIR$/src/ServerPackage/CommonOperations.java" />
-        <option value="$PROJECT_DIR$/src/ServerPackage/RegistrationServlet.java" />
-        <option value="$PROJECT_DIR$/src/ServerPackage/UsersDB.java" />
-        <option value="$PROJECT_DIR$/src/ServerPackage/ChatRoom.java" />
-        <option value="$PROJECT_DIR$/src/ServerPackage/User.java" />
-        <option value="$PROJECT_DIR$/src/User.java" />
-        <option value="$PROJECT_DIR$/src/ChatServer.java" />
-        <option value="$PROJECT_DIR$/src/Message.java" />
-        <option value="$PROJECT_DIR$/src/ChatRoom.java" />
         <option value="$PROJECT_DIR$/src/ServerPackage/LoginServlet.java" />
         <option value="$PROJECT_DIR$/src/ChatServerPackage/ChatServer.java" />
         <option value="$PROJECT_DIR$/src/ChatServerPackage/User.java" />
@@ -230,7 +234,6 @@
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServerPackage/JSONDataStructures/UsersJSON.java" />
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/JSONDataStructures/UserJSON.java" />
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/JSONDataStructures/UsersJSON.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/UsersDB.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/appengine-web.xml" />
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/GetMessagesServlet.java" />
@@ -239,7 +242,6 @@
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/GetOnlineUsersServlet.java" />
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ChatRoom.java" />
         <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatMessage.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/ServerPackage/Server.java" />
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/LoginData.java" />
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ChatServer.java" />
@@ -247,6 +249,21 @@
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java" />
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/ChangeChatRoomServlet.java" />
         <option value="$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/ExitServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/LoginData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatRoom.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/ExitServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/GetMessagesServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/GetOnlineUsersServlet.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/UsersDB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/RegistrationServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/PostMessageServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/ChangeRoomServlet.java" />
       </list>
     </option>
   </component>
@@ -321,8 +338,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -348,7 +365,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -431,21 +447,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ServerPackage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ChatServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ChatServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -464,6 +466,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -475,8 +481,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChatServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChatServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -486,7 +507,7 @@
     <property name="recentsLimit" value="5" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ChatClient" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.19740778" />
@@ -498,6 +519,8 @@
     <property name="FullScreen" value="false" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/lib" />
     <property name="dynamic.classpath" value="false" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
   <component name="RunManager" selected="Google AppEngine Dev Server.GAE Local">
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
@@ -883,6 +906,21 @@
         <artifact>ChatServer:Web exploded</artifact>
       </server-settings>
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <ConfigurationWrapper VM_VAR="" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -935,29 +973,30 @@
       <workItem from="1439820166102" duration="5359000" />
       <workItem from="1439839201772" duration="135000" />
       <workItem from="1439839374917" duration="4572000" />
+      <workItem from="1439988622157" duration="7598000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74214000" />
+    <option name="totallyTimeSpent" value="81812000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32681242" sideWeight="0.4946695" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264865" sideWeight="0.4946695" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264865" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32889125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3256617" sideWeight="0.6791045" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32540542" sideWeight="0.6791045" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26213592" sideWeight="0.46755725" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26172706" sideWeight="0.46755725" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2629083" sideWeight="0.53244275" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -993,7 +1032,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="43" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/PostMessageServlet.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/ChangeRoomServlet.java</url>
+          <line>19</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="45" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1009,10 +1062,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ChatMessage.java">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1065,10 +1126,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ChatMessage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatRoom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1076,30 +1137,12 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+          <caret line="47" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/GetMessagesServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
@@ -1107,58 +1150,116 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerPackage/Server.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/UsersDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/GetOnlineUsersServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/RegistrationServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ChatServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#417#418#0" expanded="true" />
-            <element signature="e#720#721#0" expanded="true" />
-            <element signature="e#762#763#0" expanded="true" />
-            <element signature="e#970#971#0" expanded="true" />
-            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/GetMessagesServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/GetOnlineUsersServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+          <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChatProject/ChatServerPackage/ServletPackage/ExitServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/PostMessageServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51792115">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/CommonOperations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/ExitServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="46" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ChatServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#931#932#0" expanded="true" />
+            <element signature="e#982#983#0" expanded="true" />
+            <element signature="e#1014#1015#0" expanded="true" />
+            <element signature="e#1382#1383#0" expanded="true" />
+            <element signature="e#1429#1430#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1796#1797#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ChatProject/ChatServerPackage/ServletPackage/ChangeRoomServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0838926">
+          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

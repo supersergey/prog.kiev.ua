@@ -29,15 +29,17 @@ public class PostMessageServlet extends HttpServlet {
 
         Gson json = new Gson();
         MessageJSON messageJSON = json.fromJson(sb.toString(), MessageJSON.class);
-        User user = ChatServer.getInstance().getUser(messageJSON.getName());
+        String requestedChatRoom = messageJSON.getChatRoom();
+        String requestedUserName = messageJSON.getName();
+        User user = ChatServer.getInstance().getChatRoom(requestedChatRoom).getMember(requestedUserName);
         if (null!=user)
         {
             ChatMessage chatMessage = new ChatMessage(user, messageJSON.getBody());
-            ChatServer.getInstance().getChatRoom("default").addMessage(chatMessage);
+            ChatServer.getInstance().getChatRoom(requestedChatRoom).addMessage(chatMessage);
             response.setStatus(HttpServletResponse.SC_OK);
         }
         else
-            response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
     }
 
 }

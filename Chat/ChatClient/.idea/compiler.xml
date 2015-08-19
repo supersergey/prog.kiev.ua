@@ -22,8 +22,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="ChatClient" />
         <module name="ChatEE" />
+      </profile>
+      <profile default="false" name="Annotation profile for ChatClient" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ChatClient" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">

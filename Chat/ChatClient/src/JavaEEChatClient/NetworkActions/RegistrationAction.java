@@ -1,5 +1,6 @@
 package JavaEEChatClient.NetworkActions;
 
+import JSON.LoginJSON;
 import JavaEEChatClient.GUI.LoginGUI;
 import com.google.gson.Gson;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -36,7 +37,7 @@ public class RegistrationAction implements ActionListener {
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
             HttpPost request = new HttpPost(ServerURL.ServerURL + "/register");
             Gson gson = new Gson();
-            String jsonRequest = gson.toJson(new LoginData(login, passw1));
+            String jsonRequest = gson.toJson(new LoginJSON(login, passw1));
             StringEntity entity = new StringEntity(jsonRequest, "UTF-8");
             request.setEntity(entity);
             request.addHeader("content-type", "application/json");

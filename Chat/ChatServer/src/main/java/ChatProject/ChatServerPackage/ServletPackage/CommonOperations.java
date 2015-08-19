@@ -1,5 +1,7 @@
 package ChatProject.ChatServerPackage.ServletPackage;
 
+import JSON.LoginJSON;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,14 +22,15 @@ public class CommonOperations {
         return jb.toString();
     }
 
-    public static boolean isUserRegistered(LoginData loginData)
-    {
-        String login = loginData.getLogin();
-        String password = loginData.getPassword();
+    public static boolean isUserRegistered(LoginJSON loginData) {
+        String requestedLogin = loginData.getLogin();
+        String requestedPassword = loginData.getPassword();
 
-        if (UsersDB.getInstance().getUsers().containsKey(login))
-            if (UsersDB.getInstance().getUsers().get(login).equals(password))
-                return true;
-        return false;
+        String password = UsersDB.getInstance().getUserPassword(requestedLogin);
+
+        if (null == password)
+            return false;
+        else
+            return password.equals(requestedPassword);
     }
 }

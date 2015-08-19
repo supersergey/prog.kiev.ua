@@ -1,5 +1,6 @@
 package JavaEEChatClient;
 
+import JavaEEChatClient.CommonClasses.User;
 import JavaEEChatClient.GUI.LoginGUI;
 import JavaEEChatClient.GUI.MainGUI;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public class ChatClient {
     private static MainGUI mainGUI;
     private static LoginGUI loginGUI;
+    private static User CurrentUser;
 
     public static void main(String[] args)
     {
@@ -27,4 +29,11 @@ public class ChatClient {
         mainGUI = MainGUI.getInstance();
     }
 
+    public static User getCurrentUser() {
+        return CurrentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        CurrentUser = currentUser;
+    }
 }

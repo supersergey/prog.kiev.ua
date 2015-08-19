@@ -17,6 +17,15 @@ public class ChatRoom {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean contrainsMember(String name)
+    {
+        return members.containsKey(name);
+    }
+
     public void addMember(User user)
     {
         members.put(user.getName(), user);
@@ -42,7 +51,7 @@ public class ChatRoom {
         return new ArrayList<>(messageList);
     }
 
-    public boolean removeUser(String name)
+    public boolean removeMember(String name)
     {
         User user = members.get(name);
         if (null!=user)

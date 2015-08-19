@@ -1,5 +1,7 @@
 package ChatProject.ChatServerPackage.ServletPackage;
 
+import ChatProject.ChatServerPackage.User;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +44,10 @@ public class UsersDB {
         }*/
     }
 
-    public Map<String, String> getUsers() {
-        return users;
+    protected String getUserPassword(String name)
+    {
+        return users.get(name);
     }
+
+
 }

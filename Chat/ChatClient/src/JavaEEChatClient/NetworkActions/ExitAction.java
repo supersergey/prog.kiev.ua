@@ -4,6 +4,7 @@ import JavaEEChatClient.ChatClient;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.io.IOException;
@@ -17,11 +18,12 @@ public class ExitAction {
 
     public static void doExitGet() {
         try {
-            HttpClient httpClient = HttpClientBuilder.create().build();
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
             URI uri = new URIBuilder(ServerURL.ServerURL+"/exit").addParameter("name", ChatClient.getCurrentUser().getName())
-                    .addParameter("room", ChatClient.getCurrentUser().getCurrentRoom()).build();
+                    .addParameter("room", ChatClient.getCurrentUser().getChatRoom()).build();
             HttpDelete httpDelete = new HttpDelete(uri);
             httpClient.execute(httpDelete);
+            httpClient.close();
         } catch (URISyntaxException | IOException ex) {
             ex.printStackTrace();
         }

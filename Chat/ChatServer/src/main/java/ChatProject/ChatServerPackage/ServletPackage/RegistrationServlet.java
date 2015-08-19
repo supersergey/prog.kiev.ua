@@ -1,5 +1,6 @@
 package ChatProject.ChatServerPackage.ServletPackage;
 
+import JSON.LoginJSON;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -15,10 +16,11 @@ public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String loginPasswordJSON = CommonOperations.getLoginPasswordJSON(request);
         Gson gson = new Gson();
-        LoginData loginData = gson.fromJson(loginPasswordJSON, LoginData.class);
+        LoginJSON loginData = gson.fromJson(loginPasswordJSON, LoginJSON.class);
 
-        boolean isUserRegistered = UsersDB.getInstance().getUsers().containsKey(loginData.getLogin());
-        if (!isUserRegistered)
+        String password = UsersDB.getInstance().getUserPassword(loginData.getLogin());
+
+        if (null==password)
         {
             UsersDB.getInstance().addNewUser(loginData.getLogin(), loginData.getPassword());
             response.setStatus(HttpServletResponse.SC_OK);

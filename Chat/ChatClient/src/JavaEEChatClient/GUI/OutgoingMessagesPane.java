@@ -1,5 +1,6 @@
 package JavaEEChatClient.GUI;
 
+import JavaEEChatClient.NetworkActions.ChangeChatRoomAction;
 import JavaEEChatClient.NetworkActions.PostMessage;
 
 import javax.swing.*;
@@ -11,13 +12,12 @@ import java.awt.event.KeyEvent;
 /**
  * Created by user on 11.08.2015.
  */
-public class PrivateMessagesPane extends KeyAdapter {
+public class OutgoingMessagesPane extends KeyAdapter {
 
     private JTextArea privateMessages;
     private int offset = 0;
 
-    PrivateMessagesPane()
-    {
+    OutgoingMessagesPane() {
         privateMessages = new JTextArea(5, 100);
         privateMessages.setEditable(true);
         privateMessages.setPreferredSize(new Dimension(500, 1400));
@@ -29,16 +29,17 @@ public class PrivateMessagesPane extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent evt) {
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
-        {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             int length = privateMessages.getText().length();
-            try
-            {
-                String message = privateMessages.getText(offset, length-offset);
-                // message = message.substring(0, message.length()-2); // remove trailing \r\n
-                PostMessage.doPost(message);
+            try {
+                String message = privateMessages.getText(offset, length - offset);
+                String[] commands = message.split(" ", 2);
+                if (commands[0].equals("/room"))
+                    ChangeChatRoomAction.doChangeGet(commands[1]);
+                else
+                    PostMessage.doPost(message);
+            } catch (BadLocationException ignored) {
             }
-            catch (BadLocationException ignored) {}
             offset = length + 1;
         }
     }

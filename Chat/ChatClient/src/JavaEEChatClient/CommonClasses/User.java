@@ -1,20 +1,15 @@
 package JavaEEChatClient.CommonClasses;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by user on 12.08.2015.
+ * Created by user on 19.08.2015.
  */
 public class User {
     private String name;
-    private List<ChatMessage> privateMessages = new ArrayList<>();
+    private String chatRoom;
 
-    public User(String name) {
+    public User(String name, String chatRoom) {
         this.name = name;
-    }
-
-    public User() {
+        this.chatRoom = chatRoom;
     }
 
     public String getName() {
@@ -25,11 +20,11 @@ public class User {
         this.name = name;
     }
 
-    public List<ChatMessage> getPrivateMessages() {
-        return privateMessages;
+    public String getChatRoom() {
+        return chatRoom;
     }
 
-    public void setPrivateMessages(List<ChatMessage> privateMessages) {
-        this.privateMessages = privateMessages;
+    public void setChatRoom(String chatRoom) {
+        this.chatRoom = chatRoom;
     }
 }

@@ -2,6 +2,7 @@ package JavaEEChatClient.NetworkActions;
 
 import JSON.UserJSON;
 import JSON.UsersJSON;
+import JavaEEChatClient.ChatClient;
 import JavaEEChatClient.GUI.MainGUI;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -24,16 +25,8 @@ public class GetOnlineUsersAction implements Runnable {
     private HttpGet getMethod;
 
     public GetOnlineUsersAction() {
-
-        thread = new Thread(this, "Get the list of online users");
-        try {
-            URI uri = new URIBuilder(ServerURL.ServerURL + "/getonlineusers").build();
-            getMethod = new HttpGet(uri);
-        } catch (URISyntaxException ex) {
-            ex.printStackTrace();
-        } finally {
-            thread.start();
-        }
+        thread = new Thread(this, "Get the list of the chatroom users");
+        thread.start();
     }
 
     @Override
@@ -42,6 +35,8 @@ public class GetOnlineUsersAction implements Runnable {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         while (!Thread.interrupted()) {
             try {
+                URI uri = new URIBuilder(ServerURL.ServerURL + "/getonlineusers").addParameter("username", ChatClient.getCurrentUser().getName()).addParameter("chatroom", ChatClient.getCurrentUser().getChatRoom()).build();
+                getMethod = new HttpGet(uri);
                 CloseableHttpResponse response = httpClient.execute(getMethod);
                 if (null != response) {
                     if (response.getStatusLine().getStatusCode() == 200) {
@@ -60,7 +55,7 @@ public class GetOnlineUsersAction implements Runnable {
                     response.close();
                 }
                 Thread.sleep(3000);
-            } catch (IOException | InterruptedException ex) {
+            } catch (IOException | URISyntaxException | InterruptedException ex) {
                 ex.printStackTrace();
             }
         }
