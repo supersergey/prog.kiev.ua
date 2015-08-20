@@ -18,9 +18,9 @@ public class OutgoingMessagesPane extends KeyAdapter {
     private int offset = 0;
 
     OutgoingMessagesPane() {
-        privateMessages = new JTextArea(5, 100);
+        privateMessages = new JTextArea(5, 20);
         privateMessages.setEditable(true);
-        privateMessages.setPreferredSize(new Dimension(500, 1400));
+        privateMessages.setPreferredSize(new Dimension(20, 1400));
         privateMessages.addKeyListener(this);
 
         JFrame mainFrame = MainGUI.getInstance().getMainFrame();

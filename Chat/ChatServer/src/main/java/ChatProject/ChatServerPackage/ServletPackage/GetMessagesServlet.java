@@ -52,6 +52,7 @@ public class GetMessagesServlet extends HttpServlet {
                 messageJSON.setBody(m.getBody());
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM HH:mm");
                 messageJSON.setDate(sdf.format(m.getTimestamp()));
+                messageJSON.setColor(m.getFrom().getColor());
                 messagesJSON.getMessages().add(messageJSON);
             }
 

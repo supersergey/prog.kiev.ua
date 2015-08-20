@@ -11,19 +11,17 @@ public class User {
     private List<ChatMessage> privateMessages = new ArrayList<>();
     private ChatRoom currentRoom;
     private boolean visible;
+    private int color;
+    private static int colorCounter = 0;
 
     public User(String name, ChatRoom currentRoom) {
         this.name = name;
         this.currentRoom = currentRoom;
         this.visible = true;
-    }
+        if (!name.equals("Server"))
+            this.color = colorCounter++;
+        }
 
-    public User(String name, ChatRoom currentRoom, boolean visible) {
-        this.name = name;
-        this.privateMessages = privateMessages;
-        this.currentRoom = currentRoom;
-        this.visible = visible;
-    }
 
     public String getName() {
         return name;
@@ -35,5 +33,9 @@ public class User {
 
     public void setCurrentRoom(ChatRoom currentRoom) {
         this.currentRoom = currentRoom;
+    }
+
+    public int getColor() {
+        return color;
     }
 }

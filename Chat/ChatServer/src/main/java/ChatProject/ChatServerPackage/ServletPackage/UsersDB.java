@@ -21,6 +21,7 @@ public class UsersDB {
     private UsersDB() {
         users.put("st", "st");
         users.put("koala", "bear");
+        users.put("ros", "ros");
         /*try (InputStream stream = new FileInputStream(userdbFile);
              BufferedReader br = new BufferedReader(new InputStreamReader(stream));) {
             while (br.ready()) {

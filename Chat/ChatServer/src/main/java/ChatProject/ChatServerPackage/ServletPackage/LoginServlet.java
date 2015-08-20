@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
             ChatRoom defaultRoom = ChatServer.getInstance().getDefaultChatRoom();
             if (null!=defaultRoom)
             {
-                ChatMessage welcomeMessage = new ChatMessage(defaultRoom.getMember("Server"), "User " + loginData.getLogin() + " has joined " + defaultRoom.getName() + " chatroom.");
+                ChatMessage welcomeMessage = new ChatMessage(new User("Server", defaultRoom), "User " + loginData.getLogin() + " has joined " + defaultRoom.getName() + " chatroom.");
                 defaultRoom.addMessage(welcomeMessage);
                 User newUser = new User(loginData.getLogin(), defaultRoom);
                 defaultRoom.addMember(newUser);

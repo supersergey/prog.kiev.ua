@@ -3,6 +3,7 @@ package JavaEEChatClient.NetworkActions;
 import JSON.MessageJSON;
 import JSON.MessagesJSON;
 import JavaEEChatClient.ChatClient;
+import JavaEEChatClient.CommonClasses.ChatColors;
 import JavaEEChatClient.GUI.MainGUI;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,11 +52,20 @@ public class GetMessagesAction implements Runnable {
                             String JSONresponse = new String(buf, "UTF-8");
                             MessagesJSON messagesJSON = gson.fromJson(JSONresponse, MessagesJSON.class);
                             StringBuilder sb = new StringBuilder();
+                            sb.append("<html><body>");
                             for (MessageJSON m : messagesJSON.getMessages()) {
+                                int color = m.getColor();
+                                sb.append("<div id=\"message\" color=\"");
+                                if (m.getName().equals("Server"))
+                                    sb.append("black");
+                                else
+                                    sb.append(ChatColors.values()[color % ChatColors.values().length]);
+                                sb.append("\">");
                                 sb.append(m.getName()).append(" ");
                                 sb.append(m.getDate()).append(" ");
-                                sb.append(m.getBody()).append("\r\n");
+                                sb.append(m.getBody()).append("</div>\r\n");
                             }
+                            sb.append("</body></html>");
                             MainGUI.getInstance().getAllMessagesPane().getAllMessagesPane().setText(sb.toString());
                         }
                     }

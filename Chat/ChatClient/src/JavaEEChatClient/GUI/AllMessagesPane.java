@@ -1,43 +1,34 @@
 package JavaEEChatClient.GUI;
 
-import JavaEEChatClient.ChatClient;
-import JavaEEChatClient.CommonClasses.ChatMessage;
 import JavaEEChatClient.NetworkActions.GetMessagesAction;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 /**
  * Created by user on 11.08.2015.
  */
 public class AllMessagesPane {
-    private JEditorPane allMessagesPane = new JEditorPane();
+    private JEditorPane allMessagesPane;
     AllMessagesPane() {
+            allMessagesPane = new JEditorPane();
+            allMessagesPane.setContentType("text/html;Content-Type=UTF-8");
+            allMessagesPane.setEditable(false);
+            HTMLEditorKit kit = new HTMLEditorKit();
+            allMessagesPane.setEditorKit(kit);
+            StyleSheet styleSheet = kit.getStyleSheet();
+            styleSheet.addRule("body {font-family:Arial; }");
+            DefaultCaret caret = (DefaultCaret) allMessagesPane.getCaret();
+            caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
-        allMessagesPane.setEditable(false);
-        DefaultCaret caret = (DefaultCaret)allMessagesPane.getCaret();
-        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
-
-        JFrame mainFrame = MainGUI.getInstance().getMainFrame();
-        mainFrame.add(new JScrollPane(allMessagesPane), BorderLayout.CENTER);
-        Runnable getMessages = new GetMessagesAction();
-    }
-
+            JFrame mainFrame = MainGUI.getInstance().getMainFrame();
+            mainFrame.add(new JScrollPane(allMessagesPane), BorderLayout.CENTER);
+            Runnable getMessages = new GetMessagesAction();
+        }
     public JEditorPane getAllMessagesPane() {
         return allMessagesPane;
     }

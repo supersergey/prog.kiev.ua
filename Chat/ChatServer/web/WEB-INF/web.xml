@@ -73,6 +73,16 @@
         <url-pattern>/changeroom</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetRoomsListServlet</servlet-name>
+        <servlet-class>ChatProject.ChatServerPackage.ServletPackage.GetRoomsListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetRoomsListServlet</servlet-name>
+        <url-pattern>/rooms</url-pattern>
+    </servlet-mapping>
+
 
 
 </web-app>

@@ -16,9 +16,7 @@ public class ChatServer {
 
     private ChatServer() {
         ChatRoom defaultChatRoom = new ChatRoom("default");
-        User userServer = new User("Server", defaultChatRoom, false);
-        defaultChatRoom.addMember(userServer);
-        ChatMessage welcomeMessage = new ChatMessage(userServer, "Chat server engine has started successfully. Welcome to Java Chat");
+        ChatMessage welcomeMessage = new ChatMessage(new User("Server", defaultChatRoom), "Chat server engine has started successfully. Welcome to Java Chat");
         defaultChatRoom.addMessage(welcomeMessage);
         chatRooms.put(defaultChatRoom.getName(), defaultChatRoom);
     }
@@ -55,5 +53,11 @@ public class ChatServer {
     public void addNewRoom(ChatRoom newRoom) {
         chatRooms.put(newRoom.getName(), newRoom);
     }
+
+    public void removeChatRoom(ChatRoom chatRoom)
+    {
+        chatRooms.remove(chatRoom.getName());
+    }
+
 
 }

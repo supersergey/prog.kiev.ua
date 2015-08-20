@@ -31,15 +31,12 @@ public class GetOnlineUsersServlet extends HttpServlet {
         else
         {
             UsersJSON usersJSON = new UsersJSON();
-            for (ChatRoom room : ChatServer.getInstance().getChatRooms().values())
-            {
-                for (User user : room.getOnlineMembers().values())
+            for (User user : chatRoom.getOnlineMembers().values())
                 {
                     UserJSON userJSON = new UserJSON();
                     userJSON.setName(user.getName());
                     usersJSON.getUsers().add(userJSON);
                 }
-            }
             Gson gson = new GsonBuilder().create();
             String responseJSON = gson.toJson(usersJSON, UsersJSON.class);
             response.setCharacterEncoding("UTF-8");

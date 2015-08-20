@@ -8,22 +8,17 @@ public class MessageJSON {
     private String body;
     private String date;
     private String chatRoom;
+    private int color;
 
     public MessageJSON() {
     }
 
-    public MessageJSON(String name, String body, String date) {
-        this.name = name;
-        this.body = body;
-        this.date = date;
-        this.chatRoom = "";
-    }
-
-    public MessageJSON(String name, String body, String date, String chatRoom) {
+    public MessageJSON(String name, String body, String date, String chatRoom, int color) {
         this.name = name;
         this.body = body;
         this.date = date;
         this.chatRoom = chatRoom;
+        this.color = color;
     }
 
     public String getName() {
@@ -56,5 +51,13 @@ public class MessageJSON {
 
     public void setChatRoom(String chatRoom) {
         this.chatRoom = chatRoom;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }

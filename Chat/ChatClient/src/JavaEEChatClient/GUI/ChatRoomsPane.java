@@ -1,5 +1,7 @@
 package JavaEEChatClient.GUI;
 
+import JavaEEChatClient.NetworkActions.GetRoomsListAction;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,20 +9,19 @@ import java.awt.*;
  * Created by user on 11.08.2015.
  */
 public class ChatRoomsPane {
+
+    private JFrame mainFrame;
+    private JTextArea jTextArea;
+
     ChatRoomsPane()
     {
-        JFrame mainFrame = MainGUI.getInstance().getMainFrame();
-        mainFrame.add(createChatRoomsPane(), BorderLayout.LINE_START);
+        mainFrame = MainGUI.getInstance().getMainFrame();
+        jTextArea = new JTextArea(2, 20);
+        mainFrame.add(jTextArea, BorderLayout.LINE_START);
+        new GetRoomsListAction();
     }
 
-    private Component createChatRoomsPane()
-    {
-        DefaultListModel<String> chatRoomsListModel = new DefaultListModel<>();
-        chatRoomsListModel.addElement("JavaEEChatClient.ChatClient room #1");
-        chatRoomsListModel.addElement("JavaEEChatClient.ChatClient room #2");
-        chatRoomsListModel.addElement("JavaEEChatClient.ChatClient room #3");
-        JList<String> chatRoomsList = new JList<>(chatRoomsListModel);
-        return new JScrollPane(chatRoomsList);
+    public JTextArea getjTextArea() {
+        return jTextArea;
     }
-
 }

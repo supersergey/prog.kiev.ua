@@ -24,15 +24,18 @@ public class ChangeRoomServlet extends HttpServlet {
         if (null == requestedUser)
             resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
         else {
+            ChatRoom oldChatRoom = requestedUser.getCurrentRoom();
             ChatRoom newChatRoom = ChatServer.getInstance().getChatRoom(newChatRoomName);
             if (null == newChatRoom) {
                 newChatRoom = new ChatRoom(newChatRoomName);
             }
-            ChatRoom oldChatRoom = requestedUser.getCurrentRoom();
+            requestedUser.setCurrentRoom(newChatRoom);
             oldChatRoom.removeMember(requestedUser.getName());
             newChatRoom.addMember(requestedUser);
-            newChatRoom.addMessage(new ChatMessage(new User("Server", newChatRoom), "Welcome to the chat room " + newChatRoomName + "!"));
+            newChatRoom.addMessage(new ChatMessage(new User("Server", newChatRoom), requestedUser.getName() + " joined the chat room " + newChatRoomName + ". Welcome!"));
             ChatServer.getInstance().addNewRoom(newChatRoom);
+            if (oldChatRoom.getOnlineMembers().isEmpty() && !oldChatRoom.equals(ChatServer.getInstance().getDefaultChatRoom()))
+                ChatServer.getInstance().removeChatRoom(oldChatRoom);
             resp.setStatus(HttpServletResponse.SC_OK);
         }
     }
