@@ -28,20 +28,21 @@ public class Main {
                 // generate users
                 for (int i = 0; i < 5; i++) {
                     a = new Address("UA", "Kyiv", RND.nextInt(300));
-                    em.persist(a);
+
 
                     name = randomName();
                     c = new Client(name, name.toLowerCase() + "@mydomain.com", randomPhone());
                     c.setGroup(g1);
                     c.setAddress(a);
+                    em.persist(a);
                     em.persist(c);
                 }
-                for (int i = 0; i < 5; i++) {
+                /*for (int i = 0; i < 5; i++) {
                     name = randomName();
                     c = new Client(name, name.toLowerCase() + "@mydomain.com", randomPhone());
                     g2.addClient(c);
                     em.persist(c);
-                }
+                }*/
                 cid = c.getId(); // last client id
 
                 em.getTransaction().commit();
@@ -50,7 +51,7 @@ public class Main {
                 ex.printStackTrace();
             }
 
-            // find group by id
+            /*// find group by id
             Group group = em.find(Group.class, gid);
             for (Client cli : group.getClients())
                 System.out.println("Name: " + cli.getName() + ", E-mail: " + cli.getEmail() + ", Address: "
@@ -124,7 +125,7 @@ public class Main {
             } catch (Exception ex){
                 ex.printStackTrace();
                 em.getTransaction().rollback();
-            }
+            }*/
         } finally {
             em.close();
             emf.close();

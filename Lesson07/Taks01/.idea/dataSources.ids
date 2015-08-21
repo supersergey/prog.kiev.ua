@@ -8,31 +8,31 @@
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <schema name="" catalog="mydb"/>
     <table name="addresses" schema="" catalog="mydb" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="country" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="city" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="city" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="country" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="house" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_et9ki1qnhjfl5c1ykj1luji16" table="clients" schema="" catalog="mydb" columns="address_id"/>
     </table>
     <table name="client_course" schema="" catalog="mydb" type="TABLE">
-      <column name="client_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="course_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="client_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="course_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <foreign-key name="FK_cehqci6sacbcl5qp60oia4rtb" columns="client_id" ref-table="clients" ref-schema="" ref-catalog="mydb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_mr3yh4ve4oppxs7n99i9nnrpu" columns="course_id" ref-table="courses" ref-schema="" ref-catalog="mydb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_cehqci6sacbcl5qp60oia4rtb" unique="false" columns="client_id"/>
       <index name="FK_mr3yh4ve4oppxs7n99i9nnrpu" unique="false" columns="course_id"/>
     </table>
     <table name="clients" schema="" catalog="mydb" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="address_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="name" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12"/>
-      <column name="surname" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12"/>
-      <column name="email" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12"/>
-      <column name="phone" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
-      <column name="card_number" sqlType="VARCHAR" precision="12" scale="0" nullable="true" jdbcType="12"/>
-      <column name="discriminator" sqlType="VARCHAR" precision="1" scale="0" nullable="false" jdbcType="12"/>
+      <column name="discriminator" sqlType="VARCHAR" precision="31" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="surname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="card_number" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="group_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_7ljosdy30ajc5tagsb7bhkyct" columns="group_id" ref-table="groups" ref-schema="" ref-catalog="mydb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_et9ki1qnhjfl5c1ykj1luji16" columns="address_id" ref-table="addresses" ref-schema="" ref-catalog="mydb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -41,8 +41,8 @@
       <index name="FK_et9ki1qnhjfl5c1ykj1luji16" unique="false" columns="address_id"/>
     </table>
     <table name="courses" schema="" catalog="mydb" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="name" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_mr3yh4ve4oppxs7n99i9nnrpu" table="client_course" schema="" catalog="mydb" columns="course_id"/>
     </table>
@@ -56,10 +56,10 @@
       <primary-key name="PRIMARY" columns="Id"/>
     </table>
     <table name="groups" schema="" catalog="mydb" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="name" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
-      <column name="comment" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="comment" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_7ljosdy30ajc5tagsb7bhkyct" table="clients" schema="" catalog="mydb" columns="group_id"/>
     </table>

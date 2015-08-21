@@ -9,6 +9,7 @@ import java.util.List;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
         name="discriminator",
+
         discriminatorType=DiscriminatorType.STRING
 )
 @DiscriminatorValue(value="C")
