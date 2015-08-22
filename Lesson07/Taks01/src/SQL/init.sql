@@ -8,7 +8,8 @@ email VARCHAR(128) DEFAULT NULL,
 phone VARCHAR(12) NOT NULL,
 card_number VARCHAR(12) DEFAULT NULL,
 discriminator VARCHAR(1) NOT NULL
-);
+);
+
 CREATE TABLE Groups (
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(128) NOT NULL,
@@ -32,3 +33,10 @@ CREATE TABLE Client_Course (
 client_id INT NOT NULL,
 course_id INT NOT NULL
 );
+
+create table menu (
+  id int auto_increment not null primary key,
+  name varchar(100) default null,
+  price int default null,
+  weight float default null,
+  discount bool default null);

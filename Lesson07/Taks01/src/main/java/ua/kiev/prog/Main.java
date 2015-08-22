@@ -1,22 +1,28 @@
 package ua.kiev.prog;
 
 import javax.persistence.*;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
 public class Main {
-    public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPATest");
-        EntityManager em = emf.createEntityManager();
-        try {
-            Group g1 = new Group("Group-1", "My group");
-            Group g2 = new Group("Group-2", "Another group");
-            Client c = null;
-            Address a;
-            long cid = -1, gid = -1;
-            String name;
 
-            try {
+    static Group g1 = new Group("Group-1", "My group");
+    static Group g2 = new Group("Group-2", "Another group");
+    static Client c = null;
+    static Address a;
+    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPATest");
+    static EntityManager em = emf.createEntityManager();
+    static String name;
+
+    public static void main(String[] args) {
+
+        try {
+
+            long cid = -1, gid = -1;
+
+
+/*            try {
                 em.getTransaction().begin();
 
                 // persist groups
@@ -25,31 +31,13 @@ public class Main {
 
                 System.out.println(gid = g1.getId());
 
-                // generate users
-                for (int i = 0; i < 5; i++) {
-                    a = new Address("UA", "Kyiv", RND.nextInt(300));
-
-
-                    name = randomName();
-                    c = new Client(name, name.toLowerCase() + "@mydomain.com", randomPhone());
-                    c.setGroup(g1);
-                    c.setAddress(a);
-                    em.persist(a);
-                    em.persist(c);
-                }
-                /*for (int i = 0; i < 5; i++) {
-                    name = randomName();
-                    c = new Client(name, name.toLowerCase() + "@mydomain.com", randomPhone());
-                    g2.addClient(c);
-                    em.persist(c);
-                }*/
-                cid = c.getId(); // last client id
+                cid = generate_clients(); // last client id
 
                 em.getTransaction().commit();
             } catch (Exception ex) {
                 em.getTransaction().rollback();
                 ex.printStackTrace();
-            }
+            }*/
 
             /*// find group by id
             Group group = em.find(Group.class, gid);
@@ -83,14 +71,16 @@ public class Main {
                 em.getTransaction().rollback();
             }
 
-            // select all clients
+            */
+
+            /*// select all clients
             Query query = em.createQuery("SELECT c FROM Client c", Client.class);
             List<Client> list = (List<Client>) query.getResultList();
             System.out.println("All clients:");
             for (Client cli : list)
-                System.out.println("\tName: " + cli.getName() + ", Group: " + cli.getGroup().getName());
+                System.out.println("\tName: " + cli.getName() + ", Group: " + cli.getGroup().getName());*/
 
-            // select where
+            /*// select where
             try {
                 query = em.createQuery("SELECT c FROM Client c WHERE c.email = :email", Client.class);
                 query.setParameter("email", "petr@mydomain.com");
@@ -100,23 +90,105 @@ public class Main {
                 System.out.println(">>> Not found!");
             } catch (NonUniqueResultException ex) {
                 System.out.println(">>> Non unique result!");
-            }
+            }*/
 
             // generate courses
-            Course course = new Course("Java Start");
+            /*Course[] course = new Course[] {new Course("Java Start"), new Course("Java Pro")};
             try {
                 em.getTransaction().begin();
-                em.persist(course);
+                em.persist(course[0]);
+                em.persist(course[1]);
                 for (Client cli : list) {
-                    cli.addCourse(course);
+                    cli.addCourse(course[RND.nextInt(2)]);
                 }
                 em.getTransaction().commit();
             } catch (Exception ex){
                 ex.printStackTrace();
                 em.getTransaction().rollback();
+            }*/
+
+            //
+
+            try
+            {
+                Query query = em.createQuery("SELECT c from Client c inner join c.courses crs where crs.name = :coursename and c.address.city=:city");
+                query.setParameter("city", "Kyiv");
+                query.setParameter("coursename", "Java Pro");
+                List<Client> result = (List<Client>) query.getResultList();
+                for (Client client : result)
+                    System.out.println("Name: " + client.getName() + "\r\nCity: " + client.getAddress());
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+                em.getTransaction().rollback();
             }
 
-            VipClient vc = new VipClient();
+            try
+            {
+                Query query = em.createQuery("SELECT g.name, g.clients.size from Group g");
+
+                List<Object[]> result = query.getResultList();
+                for (Object[] o : result)
+                {
+                    System.out.println("Group name: " + (String) o[0]);
+                    System.out.println("Number of clients: " + (int) o[1]);
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+                em.getTransaction().rollback();
+            }
+
+            try
+            {
+
+                Course CookingCourse = new Course("Cooking course");
+                Group cookingGroup;
+                Client cookingClient;
+                em.getTransaction().begin();
+                for (int i=0; i<3; i++)
+                {
+                    cookingGroup = new Group("Курсы поваров" + i, "");
+
+                    for(int j=0; j<5; j++)
+                    {
+                        final String cookname = randomName();
+                        cookingClient = new Client("Повар " + cookname, randomName().toLowerCase()+"@prog.kiev.ua", randomPhone());
+                        cookingGroup.addClient(cookingClient);
+                        em.persist(cookingClient);
+                    }
+                    em.persist(cookingGroup);
+                }
+                em.getTransaction().commit();
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+                em.getTransaction().rollback();
+            }
+
+
+            /*// generate menu
+            try
+            {
+                em.getTransaction().begin();
+                Menu m;
+                for (String dish : Dishes)
+                {
+                    m = new Menu(dish, RND.nextInt(1000), RND.nextFloat(), (1==RND.nextInt(2)));
+                    em.persist(m);
+                }
+                em.getTransaction().commit();
+            }
+            catch (Exception ex)
+            {
+                em.getTransaction().rollback();
+                ex.printStackTrace();
+            }*/
+
+            /*VipClient vc = new VipClient();
             vc.setPhone("12345678");
             try {
                 em.getTransaction().begin();
@@ -133,6 +205,8 @@ public class Main {
     }
 
     static final String[] NAMES = {"Ivan", "Petr", "Andrey", "Vsevolod", "Dmitriy"};
+    static final String[] CITIES = {"Kyiv", "Odessa"};
+    static final String[] Dishes = {"Fish", "Beef", "Chicken", "Ice cream", "Cake"};
     static final Random RND = new Random();
 
     static String randomName() {
@@ -144,5 +218,26 @@ public class Main {
         for (int i = 0; i < 10; i++)
             sb.append(RND.nextInt(10));
         return sb.toString();
+    }
+
+    static long generate_clients()
+    {
+        // generate users
+        for (int i = 0; i < 5; i++) {
+            a = new Address("UA", CITIES[i%2], RND.nextInt(300));
+            name = randomName();
+            c = new Client(name, name.toLowerCase() + "@mydomain.com", randomPhone());
+            c.setGroup(g1);
+            c.setAddress(a);
+            em.persist(a);
+            em.persist(c);
+        }
+                /*for (int i = 0; i < 5; i++) {
+                    name = randomName();
+                    c = new Client(name, name.toLowerCase() + "@mydomain.com", randomPhone());
+                    g2.addClient(c);
+                    em.persist(c);
+                }*/
+        return c.getId();
     }
 }

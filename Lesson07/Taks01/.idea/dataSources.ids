@@ -46,15 +46,6 @@
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_mr3yh4ve4oppxs7n99i9nnrpu" table="client_course" schema="" catalog="mydb" columns="course_id"/>
     </table>
-    <table name="flats" schema="" catalog="mydb" type="TABLE">
-      <column name="Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="District" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Address" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
-      <column name="Square" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
-      <column name="RoomsNumber" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="Price" sqlType="DECIMAL" precision="20" scale="2" nullable="false" jdbcType="3"/>
-      <primary-key name="PRIMARY" columns="Id"/>
-    </table>
     <table name="groups" schema="" catalog="mydb" type="TABLE">
       <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="comment" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -62,6 +53,14 @@
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_7ljosdy30ajc5tagsb7bhkyct" table="clients" schema="" catalog="mydb" columns="group_id"/>
+    </table>
+    <table name="menu" schema="" catalog="mydb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="price" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="weight" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="discount" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
   </data-source>
 </component>
