@@ -124,7 +124,7 @@ public class Main {
                 em.getTransaction().rollback();
             }
 
-            try
+            /*try
             {
                 Query query = em.createQuery("SELECT g.name, g.clients.size from Group g");
 
@@ -139,9 +139,9 @@ public class Main {
             {
                 ex.printStackTrace();
                 em.getTransaction().rollback();
-            }
+            }*/
 
-            try
+            /*try
             {
 
                 Course CookingCourse = new Course("Cooking course");
@@ -167,7 +167,7 @@ public class Main {
             {
                 ex.printStackTrace();
                 em.getTransaction().rollback();
-            }
+            }*/
 
 
             /*// generate menu
@@ -188,6 +188,61 @@ public class Main {
                 ex.printStackTrace();
             }*/
 
+            // «стоимость от-до»
+            try
+            {
+                Query query = em.createQuery("SELECT m.name, m.price from Menu m where m.price between 300 and 1000");
+                List<Object[]> resultList = (List<Object[]>) query.getResultList();
+                for (Object[] o : resultList)
+                {
+                    System.out.println("Название блюда: " + (String)o[0]);
+                    System.out.println("Цена блюда: " + (int)o[1]);
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+
+            try
+            {
+                Query query = em.createQuery("SELECT m.name from Menu m where m.discount = TRUE");
+                List<String> resultList = query.getResultList();
+                for (String s : resultList)
+                {
+                    System.out.println("Название блюда со скидкой: " + s);
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+
+            try
+            {
+                Query query = em.createQuery("SELECT m.name, m.weight from Menu m order by m.weight DESC");
+                List<Object[]> resultList = query.getResultList();
+                float totalweight = 0;
+                for (Object o[] : resultList)
+                {
+                    float currentWeight;
+                    if ((currentWeight = totalweight + (float)o[1])<=1)
+                    {
+                        System.out.println("Блюдо: " + o[0] + ", вес: " + o[1]);
+                        totalweight = currentWeight;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+
+
+
+
+
+
             /*VipClient vc = new VipClient();
             vc.setPhone("12345678");
             try {
@@ -198,6 +253,7 @@ public class Main {
                 ex.printStackTrace();
                 em.getTransaction().rollback();
             }*/
+
         } finally {
             em.close();
             emf.close();
