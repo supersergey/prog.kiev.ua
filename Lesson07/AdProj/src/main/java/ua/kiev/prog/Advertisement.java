@@ -1,9 +1,13 @@
 package ua.kiev.prog;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "Advs")
+@XmlRootElement(name="advertisement")
 public class Advertisement {
     @Id
     @GeneratedValue
@@ -18,6 +22,7 @@ public class Advertisement {
     private String longDesc;
 
     private String phone;
+
     private double price;
 
     @OneToOne(cascade=CascadeType.ALL)
@@ -49,6 +54,7 @@ public class Advertisement {
         this.inRecycled = false;
     }
 
+    @XmlTransient
     public long getId() {
         return id;
     }
@@ -57,6 +63,7 @@ public class Advertisement {
         this.id = id;
     }
 
+    @XmlElement(name="shortDesc")
     public String getShortDesc() {
         return shortDesc;
     }
@@ -65,6 +72,7 @@ public class Advertisement {
         this.shortDesc = shortDesc;
     }
 
+    @XmlElement(name="name")
     public String getName() {
         return name;
     }
@@ -73,6 +81,7 @@ public class Advertisement {
         this.name = name;
     }
 
+    @XmlElement(name="longDesc")
     public String getLongDesc() {
         return longDesc;
     }
@@ -81,6 +90,7 @@ public class Advertisement {
         this.longDesc = longDesc;
     }
 
+    @XmlElement(name="phone")
     public String getPhone() {
         return phone;
     }
@@ -89,6 +99,7 @@ public class Advertisement {
         this.phone = phone;
     }
 
+    @XmlElement(name="price")
     public double getPrice() {
         return price;
     }
@@ -97,6 +108,7 @@ public class Advertisement {
         this.price = price;
     }
 
+    @XmlElement(name="photo")
     public Photo getPhoto() {
         return photo;
     }
@@ -105,6 +117,7 @@ public class Advertisement {
         this.photo = photo;
     }
 
+    @XmlElement(name="inRecycled")
     public boolean isInRecycled() {
         return inRecycled;
     }
