@@ -49,6 +49,9 @@
     <form class="form-inline" role="form" action="/SpringMVC_war_exploded/add_page" method="post">
         <input type="submit" class="btn btn-default" value="Add new">
     </form>
+    <form class="form-inline" role="form" action="/SpringMVC_war_exploded/getXML" method="get">
+        <input type="submit" class="btn btn-default" value="Download records as XML">
+    </form>
 
     <a href="recycled">View Recycled Bin</a>
 </div>

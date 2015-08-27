@@ -15,6 +15,13 @@ public class AdvDAOImpl implements AdvDAO {
     private EntityManager entityManager;
 
     @Override
+    public List<Advertisement> listAll() {
+        final Query query = entityManager.createQuery("SELECT a FROM Advertisement a", Advertisement.class);
+        return (List<Advertisement>) query.getResultList();
+    }
+
+
+    @Override
     public List<Advertisement> list() {
         final Query query = entityManager.createQuery("SELECT a FROM Advertisement a WHERE a.inRecycled=false", Advertisement.class);
         return (List<Advertisement>) query.getResultList();

@@ -14,8 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,6 +132,27 @@ public class MainController {
                 ex.printStackTrace();
                 return null;
             }
+        }
+    }
+
+    @RequestMapping(value = "/getXML", method = RequestMethod.GET)
+    public ModelAndView addXML(HttpServletResponse response) {
+        Advertisements advertisements = new Advertisements();
+        advertisements.setAdvertisements(advDAO.listAll());
+        response.setContentType("application/xml;charset=UTF-8");
+        response.addHeader("Content-Disposition", "attachment; filename=\"ads.xml\"");
+
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(advertisements.getClass());
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(advertisements, response.getWriter());
+
+            return null;
+        }
+        catch (JAXBException | IOException ex) {
+            ex.printStackTrace();
+            return null;
         }
     }
 
