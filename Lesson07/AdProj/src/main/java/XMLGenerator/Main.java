@@ -13,7 +13,7 @@ import java.io.*;
  */
 public class Main {
 
-    public static void main(String[] args) throws Exception
+    /*public static void main(String[] args) throws Exception
     {
         RandomAccessFile raf = new RandomAccessFile("c:\\temp\\yacht.jpg", "r");
         byte[] buf = new byte[(int) raf.length()];
@@ -36,5 +36,5 @@ public class Main {
         Marshaller marshaller = jaxbContext.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         marshaller.marshal(ads, file);
-    }
+    }*/
 }
