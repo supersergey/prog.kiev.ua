@@ -1,21 +1,14 @@
 package ua.kiev.prog;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="Photos")
-@XmlRootElement(name="Photo")
 public class Photo {
     @Id
     @GeneratedValue
     private long id;
-
     private String name;
-
-    @Column(length=5120000)
     private byte[] body;
 
     public Photo() {}
@@ -25,7 +18,6 @@ public class Photo {
         this.body = body;
     }
 
-    @XmlTransient
     public long getId() {
         return id;
     }
@@ -34,7 +26,6 @@ public class Photo {
         this.id = id;
     }
 
-    @XmlElement(name="name")
     public String getName() {
         return name;
     }
@@ -43,7 +34,6 @@ public class Photo {
         this.name = name;
     }
 
-    @XmlElement(name="body")
     public byte[] getBody() {
         return body;
     }
