@@ -26,7 +26,7 @@
         </thead>
         <c:forEach items="${advs}" var="adv">
             <tr>
-                <td><input type="checkbox" name="restoreCheckBox" value="${adv.photo.id}"></td>
+                <td><input type="checkbox" name="restoreCheckBox" value="${adv.id}"></td>
                 <td><img height="40" width="40" src="/SpringMVC_war_exploded/image/${adv.photo.id}" /></td>
                 <td>${adv.name}</td>
                 <td>${adv.shortDesc}</td>
