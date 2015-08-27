@@ -1,10 +1,12 @@
 package ua.kiev.prog;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -110,16 +112,25 @@ public class MainController {
         }
     }
 
-    @RequestMapping(value = "/add_XML", method = RequestMethod.POST)
-    public void addXML(@RequestParam(value = "name") String name, @RequestParam(value = "xml") MultipartFile xmlfile, HttpRequest request) {
+    @RequestMapping(value = "/addXML", method = RequestMethod.POST)
+    public ModelAndView addXML(@RequestParam(value = "xmlFile") MultipartFile xmlFile, HttpServletRequest request) {
+        if (null==xmlFile || xmlFile.isEmpty())
+            return null;
+        else
+        {
             try {
                 Advertisements advertisements = new Advertisements();
                 JAXBContext jaxbContext = JAXBContext.newInstance(advertisements.getClass());
                 Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-                advertisements = (Advertisements) unmarshaller.unmarshal(xmlfile.getInputStream());
+                advertisements = (Advertisements) unmarshaller.unmarshal(xmlFile.getInputStream());
+                for (Advertisement adv : advertisements.getAdvertisements()) {
+                    advDAO.add(adv);
+                }
+                return new ModelAndView("index", "advs", advDAO.list());
+            } catch (IOException | JAXBException ex) {
+                ex.printStackTrace();
+                return null;
             }
-            catch (IOException | JAXBException ex) {
-            ex.printStackTrace();
         }
     }
 

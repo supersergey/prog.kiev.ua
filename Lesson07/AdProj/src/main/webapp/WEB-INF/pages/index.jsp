@@ -50,15 +50,6 @@
         <input type="submit" class="btn btn-default" value="Add new">
     </form>
 
-    <form class="form-inline" role="form" action="/SpringMVC_war_exploded/add_page" method="post">
-        <input type="submit" class="btn btn-default" value="Add new">
-    </form>
-
-    <form action="/SpringMVC_war_exploded/add_XML" method="post" class="form-inline" role="form">
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" value="Upload Image" name="submit">
-    </form>
-
     <a href="recycled">View Recycled Bin</a>
 </div>
 </body>

@@ -50,7 +50,6 @@
         <input type="submit" class="btn btn-default" value="Add new">
     </form>
 
-
     <a href="recycled">View Recycled Bin</a>
 </div>
 </body>
