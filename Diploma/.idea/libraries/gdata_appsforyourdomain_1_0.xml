@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="gdata-appsforyourdomain-1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/lib/gdata-appsforyourdomain-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/gdata-base-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/gdata-calendar-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/gdata-client-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/gdata-codesearch-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/gdata-photos-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lib/gdata-spreadsheet-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
