@@ -7,7 +7,7 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.calendar.CalendarScopes;
-import com.google.appengine.api.search.checkers.Preconditions;
+// import com.google.appengine.api.search.checkers.Preconditions;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -46,11 +46,12 @@ public class Utils {
         if (clientSecrets == null) {
             clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
                     new InputStreamReader(Utils.class.getResourceAsStream("/client_secrets.json")));
-            Preconditions.checkArgument(!clientSecrets.getDetails().getClientId().startsWith("Enter ")
+            /*Preconditions.checkArgument(!clientSecrets.getDetails().getClientId().startsWith("Enter ")
                             && !clientSecrets.getDetails().getClientSecret().startsWith("Enter "),
                     "Download client_secrets.json file from https://code.google.com/apis/console/"
-                            + "?api=calendar into calendar-appengine-sample/src/main/resources/client_secrets.json");
+                            + "?api=calendar into calendar-appengine-sample/src/main/resources/client_secrets.json");*/
         }
+
         return clientSecrets;
     }
 }

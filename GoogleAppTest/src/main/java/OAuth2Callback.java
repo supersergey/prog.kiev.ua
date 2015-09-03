@@ -2,7 +2,7 @@ import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.AuthorizationCodeResponseUrl;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.appengine.auth.oauth2.AbstractAppEngineAuthorizationCodeCallbackServlet;
-import com.google.appengine.api.users.UserServiceFactory;
+// import com.google.appengine.api.users.UserServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +26,7 @@ public class OAuth2Callback extends AbstractAppEngineAuthorizationCodeCallbackSe
     protected void onError(
             HttpServletRequest req, HttpServletResponse resp, AuthorizationCodeResponseUrl errorResponse)
             throws ServletException, IOException {
-        String nickname = UserServiceFactory.getUserService().getCurrentUser().getNickname();
+        String nickname = "abc"; // UserServiceFactory.getUserService().getCurrentUser().getNickname();
         resp.getWriter().print("<h3>" + nickname + ", why don't you want to play with me?</h1>");
         resp.setStatus(200);
         resp.addHeader("Content-Type", "text/html");
