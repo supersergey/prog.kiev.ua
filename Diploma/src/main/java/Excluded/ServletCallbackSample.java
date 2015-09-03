@@ -1,6 +1,5 @@
 package Excluded;
 
-import static prog.kiev.ua.AccessData.*;
 import com.google.api.client.auth.oauth2.*;
 import com.google.api.client.extensions.servlet.auth.oauth2.AbstractAuthorizationCodeCallbackServlet;
 import com.google.api.client.http.BasicAuthentication;
