@@ -17,7 +17,6 @@
     <facet type="google-app-engine" name="Google App Engine">
       <configuration>
         <sdk-home-path>$MODULE_DIR$/../../Google App Engine SDK</sdk-home-path>
-        <run-enhancer-on-make>true</run-enhancer-on-make>
         <files-to-enhance>
           <file path="$MODULE_DIR$/src" />
         </files-to-enhance>
@@ -31,6 +30,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/excluded" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

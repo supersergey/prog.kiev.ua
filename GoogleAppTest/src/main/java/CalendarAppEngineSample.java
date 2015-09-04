@@ -1,12 +1,15 @@
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.auth.oauth2.TokenResponse;
 import com.google.api.client.extensions.appengine.auth.oauth2.AbstractAppEngineAuthorizationCodeServlet;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gdata.client.spreadsheet.SpreadsheetService;
 import com.google.gdata.data.spreadsheet.SpreadsheetEntry;
 import com.google.gdata.data.spreadsheet.SpreadsheetFeed;
+import com.google.gdata.util.ContentType;
 import com.google.gdata.util.ServiceException;
 
 
@@ -15,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.List;
 
@@ -23,35 +27,55 @@ import java.util.List;
  */
 public class CalendarAppEngineSample extends AbstractAppEngineAuthorizationCodeServlet {
 
+    private AuthorizationCodeFlow flow;
+    Credential googleCredential;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
         try {
-            AuthorizationCodeFlow flow = initializeFlow();
-            Credential googleCredential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+            //AuthorizationCodeFlow flow = initializeFlow();
+
+            String ClientId = flow.getClientId();
+            Credential credential = flow.loadCredential(ClientId);
+            //Credential credential = new GoogleCredential().setAccessToken(accessToken);
+
+
+//            String userId = UserServiceFactory.getUserService().getCurrentUser().getUserId();
+//            Credential credential = Utils.getCredentials();
+
+
+
             SpreadsheetService service =
                     new SpreadsheetService("Diploma");
-            service.setOAuth2Credentials(googleCredential);
-            String accessToken = googleCredential.getAccessToken();
-            service.setAuthSubToken(accessToken);
+
+            credential.refreshToken();
+            service.setOAuth2Credentials(credential);
+
+
             URL SPREADSHEET_FEED_URL = new URL(
                     "https://spreadsheets.google.com/feeds/spreadsheets/private/full");
             SpreadsheetFeed feed = service.getFeed(SPREADSHEET_FEED_URL, SpreadsheetFeed.class);
             List<SpreadsheetEntry> spreadsheets = feed.getEntries();
             Sheets sheets = new Sheets();
+
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter writer = response.getWriter();
+
             for (SpreadsheetEntry spreadsheet : spreadsheets) {
-                sheets.getSheets().add(new Sheet(spreadsheet.getTitle().getPlainText()));
+                //sheets.getSheets().add(new Sheet(spreadsheet.getTitle().getPlainText()));
+                writer.write(spreadsheet.getTitle().getPlainText()+"\r\n");
                 // Print the title of this spreadsheet to the screen
 //                        System.out.println(spreadsheet.getTitle().getPlainText());
             }
-            response.setCharacterEncoding("UTF-8");
+
             response.setStatus(HttpServletResponse.SC_OK);
             request.setAttribute("list", sheets);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("results.jsp");
-            dispatcher.forward(request, response);
+            // dispatcher.forward(request, response);
         }
-        catch (ServletException | ServiceException ex)
+        catch (Exception ex)
         {
             ex.printStackTrace();
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
@@ -65,6 +89,7 @@ public class CalendarAppEngineSample extends AbstractAppEngineAuthorizationCodeS
 
     @Override
     protected AuthorizationCodeFlow initializeFlow() throws IOException {
-        return Utils.newFlow();
+        flow = Utils.newFlow();
+        return flow;
     }
 }
