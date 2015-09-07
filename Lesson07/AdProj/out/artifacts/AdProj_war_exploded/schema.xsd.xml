@@ -1,0 +1,19 @@
+<Advertisements>
+  <advertisement>
+    <name>string</name>
+    <!--Optional:-->
+    <shortDesc>string</shortDesc>
+    <!--Optional:-->
+    <longDesc>string</longDesc>
+    <!--Optional:-->
+    <phone>string</phone>
+    <!--Optional:-->
+    <price>1.5E2</price>
+    <!--Optional:-->
+    <photo>
+      <name>string</name>
+      <body>65</body>
+    </photo>
+    <inRecycled>true</inRecycled>
+  </advertisement>
+</Advertisements>

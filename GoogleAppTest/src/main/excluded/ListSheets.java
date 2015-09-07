@@ -3,7 +3,7 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.util.store.FileDataStoreFactory;
-//import com.google.api.services.oauth2.Oauth2;
+
 import com.google.appengine.api.appidentity.AppIdentityService;
 import com.google.appengine.api.appidentity.AppIdentityServiceFactory;
 import com.google.gdata.client.spreadsheet.SpreadsheetService;
@@ -33,7 +33,7 @@ public class ListSheets extends HttpServlet {
     // private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final List<String> SCOPES = Arrays.asList(
             "https://spreadsheets.google.com/feeds");
-    //private static Oauth2 oauth2;
+
     private static GoogleClientSecrets clientSecrets;
     private static Credential credential;
 
