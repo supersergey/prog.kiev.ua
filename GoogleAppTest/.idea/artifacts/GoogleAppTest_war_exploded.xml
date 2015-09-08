@@ -8,7 +8,6 @@
           <element id="module-output" name="GoogleAppTest" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="AppEngine API" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.1.3" />
           <element id="library" level="project" name="Maven: com.google.api-client:google-api-client-appengine:1.20.0" />
           <element id="library" level="project" name="Maven: com.google.api-client:google-api-client-gson:1.20.0" />

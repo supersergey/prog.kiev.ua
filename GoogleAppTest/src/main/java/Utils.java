@@ -8,7 +8,6 @@ import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.services.calendar.CalendarScopes;
 // import com.google.appengine.api.search.checkers.Preconditions;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,10 +29,12 @@ public class Utils {
             AppEngineDataStoreFactory.getDefaultInstance();
 
     /** Global instance of the HTTP transport. */
-    static final HttpTransport HTTP_TRANSPORT = new UrlFetchTransport();
+    static final HttpTransport HTTP_TRANSPORT =
+            new UrlFetchTransport();
 
     /** Global instance of the JSON factory. */
-    static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    static final JsonFactory JSON_FACTORY =
+            JacksonFactory.getDefaultInstance();
 
     private static GoogleClientSecrets clientSecrets = null;
 
@@ -50,10 +50,21 @@ public class Utils {
         return url.build();
     }
 
+    static  {
+        try
+        {
+            DATA_STORE_FACTORY.getDataStore("StoredCredential").clear();
+        }
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
     static GoogleAuthorizationCodeFlow newFlow() throws IOException {
         return new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY,
                 getClientCredential(), SCOPES).setDataStoreFactory(
-                DATA_STORE_FACTORY).setAccessType("offline").build();
+                DATA_STORE_FACTORY).build();
     }
 
     static GoogleClientSecrets getClientCredential() throws IOException {
@@ -69,23 +80,27 @@ public class Utils {
         return clientSecrets;
     }
 
-    static GoogleCredential getCredentials() throws GeneralSecurityException,
+    // uncomment if you want to use p12 authorization with Google Service Account
+
+    /*static GoogleCredential getCredentials() throws GeneralSecurityException,
             IOException, URISyntaxException {
         JacksonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
         HttpTransport httpTransport = GoogleNetHttpTransport
                 .newTrustedTransport();
 
         String CLIENT_ID = "749895953376-d8muikbmv6okhaaa4cthg68g3pamimd1@developer.gserviceaccount.com";
-
         URL fileUrl = Utils.class.getResource("/Diploma.p12");
+
+
         GoogleCredential credential = new GoogleCredential.Builder()
                 .setTransport(httpTransport)
                 .setJsonFactory(JSON_FACTORY)
                 .setServiceAccountId(CLIENT_ID)
                 .setServiceAccountPrivateKeyFromP12File(
                         new File(fileUrl.toURI()))
+                //.setClientSecrets(getClientCredential())
                 .setServiceAccountScopes(SCOPES).build();
 
         return credential;
-    }
+    }*/
 }

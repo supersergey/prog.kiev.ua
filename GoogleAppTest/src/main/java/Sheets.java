@@ -6,7 +6,7 @@ import java.util.List;
  * Created by st on 03.09.2015.
  */
 public class Sheets implements Serializable{
-    public List<Sheet> sheets = new ArrayList<>();
+    private List<Sheet> sheets = new ArrayList<>();
 
     public Sheets(List<Sheet> sheets) {
         this.sheets = sheets;
@@ -21,5 +21,10 @@ public class Sheets implements Serializable{
 
     public void setSheets(List<Sheet> sheets) {
         this.sheets = sheets;
+    }
+
+    public void addSheet(Sheet sheet)
+    {
+        sheets.add(sheet);
     }
 }
