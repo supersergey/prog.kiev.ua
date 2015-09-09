@@ -5,3 +5,7 @@ MyServlet/*
 FileTest/*
 GAETest/*
 lib/*
+*.json
+*.p12
+target/*
+out/*
