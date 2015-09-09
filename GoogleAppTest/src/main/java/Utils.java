@@ -1,9 +1,8 @@
+import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.appengine.datastore.AppEngineDataStoreFactory;
 import com.google.api.client.extensions.appengine.http.UrlFetchTransport;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -11,12 +10,8 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 // import com.google.appengine.api.search.checkers.Preconditions;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,6 +33,8 @@ public class Utils {
 
     private static GoogleClientSecrets clientSecrets = null;
 
+    private static Credential googleCredenitals = null;
+
     private static final List<String> SCOPES = Arrays.asList(
             "https://spreadsheets.google.com/feeds",
             "https://docs.google.com/feeds",
@@ -48,17 +45,6 @@ public class Utils {
         GenericUrl url = new GenericUrl(req.getRequestURL().toString());
         url.setRawPath("/oauth2callback");
         return url.build();
-    }
-
-    static  {
-        try
-        {
-            DATA_STORE_FACTORY.getDataStore("StoredCredential").clear();
-        }
-        catch (IOException ex)
-        {
-            ex.printStackTrace();
-        }
     }
 
     static GoogleAuthorizationCodeFlow newFlow() throws IOException {
@@ -103,4 +89,22 @@ public class Utils {
 
         return credential;
     }*/
+
+    public static Credential getGoogleCredenitals() {
+        return googleCredenitals;
+    }
+
+    public static void setGoogleCredenitals(Credential googleCredenitals) {
+        Utils.googleCredenitals = googleCredenitals;
+    }
+
+    public static String normalizePhone(String phoneNumber)
+    {
+        // remove all junk characters from the phone number, like + - . / etc.
+        // cut starting two digits, we convert +38 050 xxx xxx xxx into 050 xxx xxx xxx
+        phoneNumber = phoneNumber.replaceAll("[^x0-9]", "");
+        if (phoneNumber .length()==12)
+            phoneNumber = phoneNumber .substring(2);
+        return phoneNumber;
+    }
 }

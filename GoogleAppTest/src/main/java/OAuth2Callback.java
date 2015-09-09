@@ -14,13 +14,14 @@ import java.io.IOException;
 /**
  * Created by user on 03.09.2015.
  */
-public class OAuth2Callback extends AbstractAuthorizationCodeCallbackServlet {
+public class OAuth2Callback extends AbstractAppEngineAuthorizationCodeCallbackServlet {
 
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void onSuccess(HttpServletRequest req, HttpServletResponse resp, Credential credential)
             throws ServletException, IOException {
+        Utils.setGoogleCredenitals(credential);
         resp.sendRedirect("/getSpreadSheets");
     }
 
@@ -42,10 +43,5 @@ public class OAuth2Callback extends AbstractAuthorizationCodeCallbackServlet {
     @Override
     protected AuthorizationCodeFlow initializeFlow() throws IOException {
         return Utils.newFlow();
-    }
-
-    @Override
-    protected String getUserId(HttpServletRequest httpServletRequest) throws ServletException, IOException {
-        return "sergey.tolokunsky";
     }
 }
