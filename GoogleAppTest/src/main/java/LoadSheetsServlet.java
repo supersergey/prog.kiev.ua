@@ -1,6 +1,7 @@
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.appengine.auth.oauth2.AbstractAppEngineAuthorizationCodeServlet;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.gdata.client.spreadsheet.SpreadsheetService;
 import com.google.gdata.data.spreadsheet.*;
 import com.google.gdata.util.ServiceException;
@@ -14,6 +15,7 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -26,41 +28,32 @@ public class LoadSheetsServlet extends AbstractAppEngineAuthorizationCodeServlet
 
     public final String SPREADSHEETS_FEED_URL = "https://spreadsheets.google.com/feeds/spreadsheets/private/full";
     private SpreadsheetService service;
-    SpreadsheetFeed feed;
+    private SpreadsheetFeed feed;
+    private StudentsDAO studentsDAO = new StudentsDAOImpl();
+    private GoogleAuthorizationCodeFlow flow;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-
-        String mask = request.getParameter("phoneNumber");
-        Pattern phonePattern = Pattern.compile("\\+?([0-9\\s\\-]{7,})(?:\\s*(?:#|x\\.?|ext\\.?|extension)\\s*(\\d+))?$");
-        Matcher phoneMatcher = phonePattern.matcher(mask);
-        if (phoneMatcher.matches())
-            mask = Utils.normalizePhone(mask);
-
-        response.setCharacterEncoding("UTF-8");
-
-        StudentsDB studentsDB = StudentsDB.getInstance();
-        try {
-            if (studentsDB.getStudents().size() == 0) {
-                List<SpreadsheetEntry> spreadsheets = loadSpreadsheets();
-                if (null == spreadsheets)
-                    throw new IOException();
-                studentsDB.getStudents().addAll(getStudentsList(spreadsheets));
-            }
-                List<Student> studentsMatchingPhone = studentsDB.getStudentsByPhoneNumber(mask);
-                response.setStatus(HttpServletResponse.SC_OK);
-                request.setAttribute("students", studentsMatchingPhone);
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/results.jsp");
-                dispatcher.forward(request, response);
-        }
-        catch(ServletException | ServiceException | IOException | URISyntaxException ex)
-            {
+        if (request.getRequestURI().equals("/")) {
+            try {
+                Date currentDate = new Date();
+                // last update more than 10 seconds ago, simple antiflood protection
+                if (currentDate.getTime() - studentsDAO.getLastUpdateDate().getTime() > 10 * 1000)
+                {
+                    List<SpreadsheetEntry> spreadsheets = loadSpreadsheets();
+                    if (null == spreadsheets)
+                        throw new IOException();
+                    studentsDAO.addAll(getStudentsList(spreadsheets));
+                    studentsDAO.setLastUpdateDate();
+                }
+                response.sendRedirect("/searchpage.jsp");
+            } catch (ServiceException | IOException | URISyntaxException ex) {
                 PrintWriter writer = response.getWriter();
                 writer.write("<html>");
                 writer.write("<body>");
                 writer.write("Something went wrong. Check you google access credentials for getting data from Google Docs.");
-                writer.write("<a href=\"/\" > Return back.</a>");
+                writer.write("<br><a href=\"/\" > Return back.</a>");
                 writer.write("</body>");
                 writer.write("</html>");
                 writer.flush();
@@ -68,6 +61,7 @@ public class LoadSheetsServlet extends AbstractAppEngineAuthorizationCodeServlet
                 response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
         }
+    }
 
     @Override
     protected String getRedirectUri(HttpServletRequest req) throws ServletException, IOException {
@@ -76,11 +70,13 @@ public class LoadSheetsServlet extends AbstractAppEngineAuthorizationCodeServlet
 
     @Override
     protected AuthorizationCodeFlow initializeFlow() throws IOException {
-        return Utils.newFlow();
+        flow = Utils.newFlow();
+        return flow;
     }
 
-    private List<SpreadsheetEntry> loadSpreadsheets() throws ServiceException, IOException{
+    private List<SpreadsheetEntry> loadSpreadsheets() throws ServiceException, IOException {
         Credential credential = Utils.getGoogleCredenitals();
+                //flow.loadCredential(Utils.getClientCredential().getDetails().getClientId());
         if (null == credential)
             throw new IOException();
 

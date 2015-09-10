@@ -45,6 +45,6 @@
       </tr>
     </c:forEach>
   </table>
-  <a href="/">Return to the main page.</a>
+  <a href="searchpage.jsp">Return to the main page.</a>
 </body>
 </html>

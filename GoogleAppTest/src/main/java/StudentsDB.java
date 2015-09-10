@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -5,6 +6,9 @@ import java.util.List;
  * Created by user on 09.09.2015.
  */
 public class StudentsDB {
+
+    public Date lastUpdateDate = new Date(0L);
+
     private static StudentsDB ourInstance = new StudentsDB();
 
     public static StudentsDB getInstance() {
@@ -19,23 +23,5 @@ public class StudentsDB {
     public List<Student> getStudents()
     {
         return students;
-    }
-
-    public void addStudent(Student student)
-    {
-        students.add(student);
-    }
-
-    public List<Student> getStudentsByPhoneNumber(String phoneNumber)
-    {
-        List<Student> result = new LinkedList<>();
-        for (Student student : students)
-        {
-            String studentPhoneNumber = student.getPhone();
-            studentPhoneNumber = Utils.normalizePhone(studentPhoneNumber);
-            if (studentPhoneNumber.equals(phoneNumber))
-                result.add(student);
-        }
-        return result;
     }
 }

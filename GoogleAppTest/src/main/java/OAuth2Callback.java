@@ -22,7 +22,7 @@ public class OAuth2Callback extends AbstractAppEngineAuthorizationCodeCallbackSe
     protected void onSuccess(HttpServletRequest req, HttpServletResponse resp, Credential credential)
             throws ServletException, IOException {
         Utils.setGoogleCredenitals(credential);
-        resp.sendRedirect("/getSpreadSheets");
+        resp.sendRedirect("/");
     }
 
     @Override

@@ -4,18 +4,20 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
+
+    <!--<welcome-file-list>-->
+        <!--<welcome-file>searchpage.jsp</welcome-file>-->
+    <!--</welcome-file-list>-->
 
     <servlet>
         <servlet-name>LoadSheetsServlet</servlet-name>
         <servlet-class>LoadSheetsServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>LoadSheetsServlet</servlet-name>
-        <url-pattern>/getSpreadSheets</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -27,6 +29,27 @@
         <servlet-name>oauth2Callback</servlet-name>
         <url-pattern>/oauth2callback/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>SearchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RootServlet</servlet-name>
+        <servlet-class>RootServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RootServlet</servlet-name>
+        <url-pattern>/root</url-pattern>
+    </servlet-mapping>
+
+
 
     <security-constraint>
         <web-resource-collection>

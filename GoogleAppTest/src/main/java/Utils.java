@@ -41,6 +41,17 @@ public class Utils {
             "https://www.googleapis.com/auth/drive");
 
 
+    static {
+        try
+        {
+            DATA_STORE_FACTORY.getDataStore("StoredCredential").clear();
+        }
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
     static String getRedirectUri(HttpServletRequest req) {
         GenericUrl url = new GenericUrl(req.getRequestURL().toString());
         url.setRawPath("/oauth2callback");
@@ -50,7 +61,7 @@ public class Utils {
     static GoogleAuthorizationCodeFlow newFlow() throws IOException {
         return new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY,
                 getClientCredential(), SCOPES).setDataStoreFactory(
-                DATA_STORE_FACTORY).build();
+                DATA_STORE_FACTORY).setAccessType("offline").build();
     }
 
     static GoogleClientSecrets getClientCredential() throws IOException {
