@@ -52,36 +52,41 @@
         </form>
 
     </div>
+    <!-- 0 - init state, 1 - data is found, 2 - data not found -->
+    <c:choose>
+        <c:when test="${dataIsReady == 1}">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <td><b>Name</b></td>
+                    <td><b>Phone</b></td>
+                    <td><b>Payment</b></td>
+                    <td><b>Comment</b></td>
+                    <td><b>Course name</b></td>
+                    <td><b>Start Date</b></td>
+                    <td><b>Teacher</b></td>
+                    <td><b>Location</b></td>
+                </tr>
+                </thead>
+                <c:forEach items="${students}"  var="s">
+                    <tr>
+                        <td><c:out value="${s.name}"/></td>
+                        <td><c:out value="${s.phone}"/></td>
+                        <td><c:out value="${s.payment}"/></td>
+                        <td><c:out value="${s.comment}"/></td>
+                        <td><c:out value="${s.courseName}"/></td>
+                        <td><c:out value="${s.startDate}"/></td>
+                        <td><c:out value="${s.teacherName}"/></td>
+                        <td><c:out value="${s.location}"/></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:when>
+        <c:when test="${dataIsReady == 2}">
+            <h3>User not found. Please try again.</h3>
+        </c:when>
+    </c:choose>
 
-    <c:if test="${dataIsReady eq true}">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <td><b>Name</b></td>
-            <td><b>Phone</b></td>
-            <td><b>Payment</b></td>
-            <td><b>Comment</b></td>
-            <td><b>Course name</b></td>
-            <td><b>Start Date</b></td>
-            <td><b>Teacher</b></td>
-            <td><b>Location</b></td>
-        </tr>
-        </thead>
-
-        <c:forEach items="${students}"  var="s">
-            <tr>
-                <td><c:out value="${s.name}"/></td>
-                <td><c:out value="${s.phone}"/></td>
-                <td><c:out value="${s.payment}"/></td>
-                <td><c:out value="${s.comment}"/></td>
-                <td><c:out value="${s.courseName}"/></td>
-                <td><c:out value="${s.startDate}"/></td>
-                <td><c:out value="${s.teacherName}"/></td>
-                <td><c:out value="${s.location}"/></td>
-            </tr>
-        </c:forEach>
-    </table>
-    </c:if>
 
     <footer class="footer">
         <p>(c) Sergey Tolokunsky 2015 // thanks to prog.kiev.ua</p>

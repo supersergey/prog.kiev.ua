@@ -1,3 +1,4 @@
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,9 @@ public class RootServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Enumeration<String> s = request.getHeaderNames();
+        request.setAttribute("dataIsReady", 1); // 0 - init page, 1 - data is found, 2 - data not found
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/test.jsp");
+        dispatcher.forward(request, response);
+
     }
 }

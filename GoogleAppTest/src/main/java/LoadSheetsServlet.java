@@ -2,6 +2,7 @@ import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.appengine.auth.oauth2.AbstractAppEngineAuthorizationCodeServlet;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gdata.client.spreadsheet.SpreadsheetService;
 import com.google.gdata.data.spreadsheet.*;
 import com.google.gdata.util.ServiceException;
@@ -75,8 +76,8 @@ public class LoadSheetsServlet extends AbstractAppEngineAuthorizationCodeServlet
     }
 
     private List<SpreadsheetEntry> loadSpreadsheets() throws ServiceException, IOException {
-        Credential credential = Utils.getGoogleCredenitals();
-                //flow.loadCredential(Utils.getClientCredential().getDetails().getClientId());
+        String userId = UserServiceFactory.getUserService().getCurrentUser().getUserId();
+        Credential credential = Utils.newFlow().loadCredential(userId);
         if (null == credential)
             throw new IOException();
 
@@ -90,7 +91,7 @@ public class LoadSheetsServlet extends AbstractAppEngineAuthorizationCodeServlet
 
     private List<Student> getStudentsList(List<SpreadsheetEntry> spreadsheets) throws IOException, ServiceException, URISyntaxException {
         List<Student> result = new LinkedList<>();
-
+        studentsDAO.drop();
         for (SpreadsheetEntry spreadsheet : spreadsheets) {
             String sheetName = spreadsheet.getTitle().getPlainText().toLowerCase();
             if (sheetName.startsWith("java") || sheetName.startsWith("android")) // process only the spreadsheets names starting with Java or Android

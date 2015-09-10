@@ -10,4 +10,5 @@ public interface StudentsDAO {
     void addAll(List<Student> students);
     Date getLastUpdateDate();
     void setLastUpdateDate();
+    void drop();
 }

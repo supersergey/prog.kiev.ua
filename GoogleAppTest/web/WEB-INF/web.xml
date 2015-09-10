@@ -17,7 +17,7 @@
 
     <servlet-mapping>
         <servlet-name>LoadSheetsServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/load</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -38,6 +38,16 @@
         <servlet-name>RootServlet</servlet-name>
         <servlet-class>RootServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>P12Servlet</servlet-name>
+        <servlet-class>P12Servlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>P12Servlet</servlet-name>
+        <url-pattern>/p12</url-pattern>
+    </servlet-mapping>
+
 
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
@@ -46,19 +56,17 @@
 
     <servlet-mapping>
         <servlet-name>RootServlet</servlet-name>
-        <url-pattern>/root</url-pattern>
+        <url-pattern>/test</url-pattern>
     </servlet-mapping>
 
-
-
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>any</web-resource-name>
-            <url-pattern>/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>*</role-name>
-        </auth-constraint>
-    </security-constraint>
+    <!--<security-constraint>-->
+        <!--<web-resource-collection>-->
+            <!--<web-resource-name>any</web-resource-name>-->
+            <!--<url-pattern>/*</url-pattern>-->
+        <!--</web-resource-collection>-->
+        <!--<auth-constraint>-->
+            <!--<role-name>*</role-name>-->
+        <!--</auth-constraint>-->
+    <!--</security-constraint>-->
 
 </web-app>

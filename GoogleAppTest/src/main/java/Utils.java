@@ -3,6 +3,8 @@ import com.google.api.client.extensions.appengine.datastore.AppEngineDataStoreFa
 import com.google.api.client.extensions.appengine.http.UrlFetchTransport;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -10,8 +12,12 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 // import com.google.appengine.api.search.checkers.Preconditions;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -79,7 +85,7 @@ public class Utils {
 
     // uncomment if you want to use p12 authorization with Google Service Account
 
-    /*static GoogleCredential getCredentials() throws GeneralSecurityException,
+    static GoogleCredential getP12Credentials() throws GeneralSecurityException,
             IOException, URISyntaxException {
         JacksonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
         HttpTransport httpTransport = GoogleNetHttpTransport
@@ -99,7 +105,7 @@ public class Utils {
                 .setServiceAccountScopes(SCOPES).build();
 
         return credential;
-    }*/
+    }
 
     public static Credential getGoogleCredenitals() {
         return googleCredenitals;

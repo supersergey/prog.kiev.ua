@@ -43,4 +43,9 @@ public class StudentsDAOImpl implements StudentsDAO{
     public void setLastUpdateDate() {
         students.lastUpdateDate = new Date();
     }
+
+    @Override
+    public void drop() {
+        students.getStudents().clear();
+    }
 }

@@ -14,7 +14,7 @@
     </facet>
     <facet type="google-app-engine" name="Google App Engine">
       <configuration>
-        <sdk-home-path>$MODULE_DIR$/../../GAE/appengine-java-sdk-1.9.24</sdk-home-path>
+        <sdk-home-path>$MODULE_DIR$/../../Google App Engine SDK</sdk-home-path>
         <files-to-enhance>
           <file path="$MODULE_DIR$/src" />
         </files-to-enhance>
@@ -76,5 +76,7 @@
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="html5shiv" level="application" />
+    <orderEntry type="library" name="respond" level="application" />
   </component>
 </module>

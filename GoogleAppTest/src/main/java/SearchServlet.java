@@ -23,8 +23,13 @@ public class SearchServlet extends HttpServlet {
         List<Student> studentsMatchingPhone = studentsDAO.getStudentsByPhoneNumber(mask);
         response.setStatus(HttpServletResponse.SC_OK);
         response.setCharacterEncoding("UTF-8");
-        request.setAttribute("students", studentsMatchingPhone);
-        request.setAttribute("dataIsReady", true);
+        if (!studentsMatchingPhone.isEmpty())
+        {
+            request.setAttribute("students", studentsMatchingPhone);
+            request.setAttribute("dataIsReady", 1); // 0 - init page, 1 - data is found, 2 - data not found
+        }
+        else
+            request.setAttribute("dataIsReady", 2);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/searchpage.jsp");
         dispatcher.forward(request, response);
     }
