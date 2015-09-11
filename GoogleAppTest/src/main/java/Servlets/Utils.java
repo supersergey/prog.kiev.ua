@@ -11,6 +11,8 @@ import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.gmail.Gmail;
+import com.google.api.services.gmail.GmailScopes;
 // import com.google.appengine.api.search.checkers.Preconditions;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,10 +33,18 @@ public class Utils {
     private static final AppEngineDataStoreFactory DATA_STORE_FACTORY =
             AppEngineDataStoreFactory.getDefaultInstance();
 
+    private static final JacksonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    private static final String CLIENT_ID = "749895953376-d8muikbmv6okhaaa4cthg68g3pamimd1@developer.gserviceaccount.com";
+    private static final URL fileUrl = Utils.class.getResource("/Diploma.p12");
+    static GoogleCredential credential;
+    private static final String APPLICATION_NAME = "Diploma";
+    private static HttpTransport httpTransport;
+
     private static final List<String> SCOPES = Arrays.asList(
             "https://spreadsheets.google.com/feeds",
             "https://docs.google.com/feeds",
-            "https://www.googleapis.com/auth/drive");
+            "https://www.googleapis.com/auth/drive",
+            GmailScopes.GMAIL_LABELS);
 
     /*static {
         try
@@ -47,17 +57,15 @@ public class Utils {
         }
     }*/
 
+    static Gmail getGmailService()
+    {
+        return new Gmail.Builder(httpTransport, JSON_FACTORY, credential).setApplicationName(Utils.APPLICATION_NAME).build();
+    }
+
     static GoogleCredential getP12Credentials() throws GeneralSecurityException,
             IOException, URISyntaxException {
-        JacksonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-        HttpTransport httpTransport = GoogleNetHttpTransport
-                .newTrustedTransport();
-
-        String CLIENT_ID = "749895953376-d8muikbmv6okhaaa4cthg68g3pamimd1@developer.gserviceaccount.com";
-        URL fileUrl = Utils.class.getResource("/Diploma.p12");
-
-
-        GoogleCredential credential = new GoogleCredential.Builder()
+        httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+        return new GoogleCredential.Builder()
                 .setTransport(httpTransport)
                 .setJsonFactory(JSON_FACTORY)
                 .setServiceAccountId(CLIENT_ID)
@@ -65,8 +73,6 @@ public class Utils {
                         new File(fileUrl.toURI()))
                 //.setClientSecrets(getClientCredential())
                 .setServiceAccountScopes(SCOPES).build();
-
-        return credential;
     }
 
     public static String normalizePhone(String phoneNumber)

@@ -37,12 +37,14 @@
 
 <div class="container">
     <div class="header clearfix">
-        <h3 class="text-muted"><c:out value="${title}"/></h3>
+        <h3 class="text-muted"><a href="/"><c:out value="${title}"/></a></h3>
     </div>
 
 
     <div class="jumbotron">
-        <img src="images/keng.png" alt="Greetings from Australia!" hspace="5" vspace="5" style="height: 160px; top: -20px; float: right; display: inline; position: relative">
+        <img src="images/keng.png" alt="Greetings from Australia!" hspace="5" vspace="5"
+             style="height: 160px; top: -20px; float: right; display: inline; position: relative">
+
         <h1>Поиск видео</h1>
 
 
@@ -52,7 +54,7 @@
 
                 <div class="input-group col-md-12">
                     <input type="text" class="  search-query form-control" name="phoneNumber"
-                           placeholder="050-011-022-033"/>
+                           placeholder="050-234-05-06"/>
                                 <span class="input-group-btn">
                                     <button class="btn btn-danger" type="submit">
                                         <span class=" glyphicon glyphicon-search"></span>
@@ -65,8 +67,8 @@
         </form>
     </div>
 
-
-    <c:if test="${searchResult == 'dataIsFound'}">
+    <div>
+        <c:if test="${searchResult == 'dataIsFound'}">
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -82,18 +84,32 @@
                     </tr>
                 </c:forEach>
             </table>
-    </c:if>
-    <c:if test="${searchResult == 'userNotFound'}">
+            <div style="display: block; width: 50%">
+                <form action="/sendMail" method="post">
+                    <div class="input-group">
+                     <input type="text" name="emailAddress" class="form-control" placeholder="mr.beans@prog.kiev.ua">
+                        <c:set var="i" scope="request" value="1" />
+                        <input type="hidden" name="courseName" items="${linksMap}">
+                     <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Получить ссылки на емейл</button>
+                     </span>
+                    </div>
+                </form>
+            </div>
+        </c:if>
+        <c:if test="${searchResult == 'userNotFound'}">
             <h3>Студент с таким номером телефона на найден!</h3>
-    </c:if>
+        </c:if>
+    </div>
 
 
+    <footer class="footer">
+        <p>(c) Sergey Tolokunsky 2015 // спасибо <a href="http://prog.kiev.ua" target="_blank">prog.kiev.ua</a></p>
+    </footer>
 
-<footer class="footer">
-    <p>(c) Sergey Tolokunsky 2015 // спасибо prog.kiev.ua</p>
-</footer>
 
-</div><!-- /container -->
+</div>
+<!-- /container -->
 
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

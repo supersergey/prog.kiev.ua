@@ -36,6 +36,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="AppEngine Dev 1.9.25" level="application_server_libraries" />
     <orderEntry type="library" scope="PROVIDED" name="AppEngine Dev 1.9.22" level="application_server_libraries" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="Maven: com.google.api-client:google-api-client:1.20.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.oauth-client:google-oauth-client:1.20.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.http-client:google-http-client:1.20.0" level="project" />
@@ -74,7 +76,6 @@
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.appengine:appengine-api-1.0-sdk:1.9.25" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
-    <orderEntry type="library" name="bootstrap" level="application" />
-    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="Maven: com.google.apis:google-api-services-gmail:v1-rev32-1.20.0" level="project" />
   </component>
 </module>

@@ -35,7 +35,7 @@ public class SearchServlet extends HttpServlet {
     private SpreadsheetFeed feed;
     private StudentsDAO studentsDAO = new StudentsDAOImpl();
     private static int counter = 0;
-    private GoogleCredential credential;
+
 
     {
         counter++;
@@ -115,16 +115,16 @@ public class SearchServlet extends HttpServlet {
         flow.loadCredential(Servlets.Utils.getClientCredential().getDetails().getClientId());
          */
 
-        if (null == credential)
-            credential = Utils.getP12Credentials();
+        if (null == Utils.credential)
+            Utils.credential= Utils.getP12Credentials();
 
-        if (null == credential)
+        if (null == Utils.credential)
             throw new IOException();
 
         if (null == service)
         {
             service = new SpreadsheetService("Diploma");
-            service.setOAuth2Credentials(credential);
+            service.setOAuth2Credentials(Utils.credential);
         }
 
         // this is the most time-consuming operation, may take 10-15 seconds

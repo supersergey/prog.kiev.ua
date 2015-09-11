@@ -13,10 +13,18 @@
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>Servlets.SearchServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SendMail</servlet-name>
+        <servlet-class>Servlets.SendMail</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendMail</servlet-name>
+        <url-pattern>/sendMail</url-pattern>
     </servlet-mapping>
 
     <!--<security-constraint>-->
