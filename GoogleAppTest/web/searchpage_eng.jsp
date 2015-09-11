@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<html>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -15,17 +16,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Narrow Jumbotron Template for Bootstrap</title>
+    <title>Sergey Tolokunsky Graduation Project</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="jumbotron-narrow.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,15 +44,44 @@
 
         <form action="/search" method="get">
             <div class="form-group">
-                <label for="phoneNumber">Student's phone number</label>
+                <label for="phoneNumber">DAO.Student's phone number</label>
                 <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="phone">
             </div>
-            <a href="/getSpreadSheets">Update DB before searching the first time or if you have new data in spreadsheets (takes time).</a>
+            <a href="/">Update search base if you have new data in spreadsheets (takes time).</a>
             <p><input type="submit"></p>
         </form>
 
     </div>
 
+    <c:if test="${dataIsReady eq true}">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td><b>Name</b></td>
+            <td><b>Phone</b></td>
+            <td><b>Payment</b></td>
+            <td><b>Comment</b></td>
+            <td><b>Course name</b></td>
+            <td><b>Start Date</b></td>
+            <td><b>Teacher</b></td>
+            <td><b>Location</b></td>
+        </tr>
+        </thead>
+
+        <c:forEach items="${students}"  var="s">
+            <tr>
+                <td><c:out value="${s.name}"/></td>
+                <td><c:out value="${s.phone}"/></td>
+                <td><c:out value="${s.payment}"/></td>
+                <td><c:out value="${s.comment}"/></td>
+                <td><c:out value="${s.courseName}"/></td>
+                <td><c:out value="${s.startDate}"/></td>
+                <td><c:out value="${s.teacherName}"/></td>
+                <td><c:out value="${s.location}"/></td>
+            </tr>
+        </c:forEach>
+    </table>
+    </c:if>
 
     <footer class="footer">
         <p>(c) Sergey Tolokunsky 2015 // thanks to prog.kiev.ua</p>
@@ -66,12 +92,4 @@
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-
-
 </body>
-<body>
-<p>
-
-</p>
-</body>
-</html>

@@ -1,3 +1,5 @@
+package Servlets;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.appengine.datastore.AppEngineDataStoreFactory;
 import com.google.api.client.extensions.appengine.http.UrlFetchTransport;
@@ -29,25 +31,12 @@ public class Utils {
     private static final AppEngineDataStoreFactory DATA_STORE_FACTORY =
             AppEngineDataStoreFactory.getDefaultInstance();
 
-    /** Global instance of the HTTP transport. */
-    static final HttpTransport HTTP_TRANSPORT =
-            new UrlFetchTransport();
-
-    /** Global instance of the JSON factory. */
-    static final JsonFactory JSON_FACTORY =
-            JacksonFactory.getDefaultInstance();
-
-    private static GoogleClientSecrets clientSecrets = null;
-
-    private static Credential googleCredenitals = null;
-
     private static final List<String> SCOPES = Arrays.asList(
             "https://spreadsheets.google.com/feeds",
             "https://docs.google.com/feeds",
             "https://www.googleapis.com/auth/drive");
 
-
-    static {
+    /*static {
         try
         {
             DATA_STORE_FACTORY.getDataStore("StoredCredential").clear();
@@ -56,34 +45,7 @@ public class Utils {
         {
             ex.printStackTrace();
         }
-    }
-
-    static String getRedirectUri(HttpServletRequest req) {
-        GenericUrl url = new GenericUrl(req.getRequestURL().toString());
-        url.setRawPath("/oauth2callback");
-        return url.build();
-    }
-
-    static GoogleAuthorizationCodeFlow newFlow() throws IOException {
-        return new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY,
-                getClientCredential(), SCOPES).setDataStoreFactory(
-                DATA_STORE_FACTORY).setAccessType("offline").build();
-    }
-
-    static GoogleClientSecrets getClientCredential() throws IOException {
-        if (clientSecrets == null) {
-            clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
-                    new InputStreamReader(Utils.class.getResourceAsStream("/client_secrets.json")));
-            /*Preconditions.checkArgument(!clientSecrets.getDetails().getClientId().startsWith("Enter ")
-                            && !clientSecrets.getDetails().getClientSecret().startsWith("Enter "),
-                    "Download client_secrets.json file from https://code.google.com/apis/console/"
-                            + "?api=calendar into calendar-appengine-sample/src/main/resources/client_secrets.json");*/
-        }
-
-        return clientSecrets;
-    }
-
-    // uncomment if you want to use p12 authorization with Google Service Account
+    }*/
 
     static GoogleCredential getP12Credentials() throws GeneralSecurityException,
             IOException, URISyntaxException {
@@ -107,18 +69,10 @@ public class Utils {
         return credential;
     }
 
-    public static Credential getGoogleCredenitals() {
-        return googleCredenitals;
-    }
-
-    public static void setGoogleCredenitals(Credential googleCredenitals) {
-        Utils.googleCredenitals = googleCredenitals;
-    }
-
     public static String normalizePhone(String phoneNumber)
     {
         // remove all junk characters from the phone number, like + - . / etc.
-        // cut starting two digits, we convert +38 050 xxx xxx xxx into 050 xxx xxx xxx
+        // remove starting two digits, we convert +38 050 xxx xxx xxx into 050 xxx xxx xxx
         phoneNumber = phoneNumber.replaceAll("[^x0-9]", "");
         if (phoneNumber .length()==12)
             phoneNumber = phoneNumber .substring(2);

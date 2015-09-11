@@ -1,0 +1,4 @@
+// format must be [Course name][space]=[space][price]. If there are no spaces, the app will fail
+Java Start = 1250
+Java OOP = 3150
+Java Pro = 3450

@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<c:set var="title" scope="request" value="${\"Дипломный проект Сергея Толокунского\"}"/>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +18,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Sergey Tolokunsky Graduation Project</title>
+    <title><c:out value="${title}"/></title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,64 +37,63 @@
 
 <div class="container">
     <div class="header clearfix">
-        <h3 class="text-muted">Sergey Tolokunsky Graduation Project</h3>
+        <h3 class="text-muted"><c:out value="${title}"/></h3>
     </div>
 
+
     <div class="jumbotron">
-        <h1>Welcome</h1>
+        <img src="images/keng.png" alt="Greetings from Australia!" hspace="5" vspace="5" style="height: 160px; top: -20px; float: right; display: inline; position: relative">
+        <h1>Поиск видео</h1>
 
 
         <form action="/search" method="get">
-            <div class="form-group">
-                <label for="phoneNumber">Student's phone number</label>
-                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="phone">
-            </div>
-            <a href="/">Update search base if you have new data in spreadsheets (takes time).</a>
-            <p><input type="submit"></p>
-        </form>
+            <div id="custom-search-input">
+                <h2>Введите свой мобильный:</h2>
 
+                <div class="input-group col-md-12">
+                    <input type="text" class="  search-query form-control" name="phoneNumber"
+                           placeholder="050-011-022-033"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="submit">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+
+                </div>
+
+            </div>
+        </form>
     </div>
-    <!-- 0 - init state, 1 - data is found, 2 - data not found -->
-    <c:choose>
-        <c:when test="${dataIsReady == 1}">
+
+
+    <c:if test="${searchResult == 'dataIsFound'}">
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <td><b>Name</b></td>
-                    <td><b>Phone</b></td>
-                    <td><b>Payment</b></td>
-                    <td><b>Comment</b></td>
-                    <td><b>Course name</b></td>
-                    <td><b>Start Date</b></td>
-                    <td><b>Teacher</b></td>
-                    <td><b>Location</b></td>
+                    <td><b>Название курса</b></td>
+                    <td><b>Ссылка на видео</b></td>
+
                 </tr>
                 </thead>
-                <c:forEach items="${students}"  var="s">
+                <c:forEach var="entry" items="${linksMap}">
                     <tr>
-                        <td><c:out value="${s.name}"/></td>
-                        <td><c:out value="${s.phone}"/></td>
-                        <td><c:out value="${s.payment}"/></td>
-                        <td><c:out value="${s.comment}"/></td>
-                        <td><c:out value="${s.courseName}"/></td>
-                        <td><c:out value="${s.startDate}"/></td>
-                        <td><c:out value="${s.teacherName}"/></td>
-                        <td><c:out value="${s.location}"/></td>
+                        <td><c:out value="${entry.key}"/></td>
+                        <td>${entry.value}</td>
                     </tr>
                 </c:forEach>
             </table>
-        </c:when>
-        <c:when test="${dataIsReady == 2}">
-            <h3>User not found. Please try again.</h3>
-        </c:when>
-    </c:choose>
+    </c:if>
+    <c:if test="${searchResult == 'userNotFound'}">
+            <h3>Студент с таким номером телефона на найден!</h3>
+    </c:if>
 
 
-    <footer class="footer">
-        <p>(c) Sergey Tolokunsky 2015 // thanks to prog.kiev.ua</p>
-    </footer>
 
-</div> <!-- /container -->
+<footer class="footer">
+    <p>(c) Sergey Tolokunsky 2015 // спасибо prog.kiev.ua</p>
+</footer>
+
+</div><!-- /container -->
 
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

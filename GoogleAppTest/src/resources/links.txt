@@ -1,0 +1,7 @@
+// format must be [Course name][space]=[space][link]. If there are no spaces, the app will fail
+Java Start = http://www.youtube.com/link1
+Java OOP = https://www.youtube.com/watch?v=wjvImsu-kXI
+Java Pro = http://www.youtube.com/link3
+QA Start = http://www.youtube.com/link4
+Android = http://www.youtube.com/link5
+PHP = http://www.youtube.com/link6
