@@ -52,17 +52,15 @@ public class SendMail extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String emailAddress = request.getParameter("emailAddress").trim();
-        Map<String, String[]> map = request.getParameterMap();
-
-        String[] courses = map.get("courseName");
-        String[] urls = map.get("url");
+        Integer mailId = Integer.parseInt(request.getParameter("mailId"));
+        MailEntry mailEntry = MailStack.getEntryById(mailId);
 
         StringBuilder resultText = new StringBuilder();
 
-        for (int i = 0; i < courses.length; i++)
+        for (Map.Entry<String, String> entry : mailEntry.getCourses().entrySet())
         {
-            if (!urls[i].equals("Для получения ссылки оплатите курс полностью."))
-                resultText.append(courses[i]).append(": ").append(urls[i]);
+            if (!entry.getKey().equals("Р”Р»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЃСЃС‹Р»РєРё РѕРїР»Р°С‚РёС‚Рµ РєСѓСЂСЃ РїРѕР»РЅРѕСЃС‚СЊСЋ."))
+                resultText.append(entry.getKey()).append(": ").append(entry.getValue()).append("\r\n");
         }
 
         String msgBody = String.format(message, resultText.toString());

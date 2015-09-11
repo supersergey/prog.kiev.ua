@@ -87,12 +87,12 @@
             <div style="display: block; width: 50%">
                 <form action="/sendMail" method="post">
                     <div class="input-group">
-                     <input type="text" name="emailAddress" class="form-control" placeholder="mr.beans@prog.kiev.ua">
-                        <c:set var="i" scope="request" value="1" />
-                        <input type="hidden" name="courseName" items="${linksMap}">
-                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Получить ссылки на емейл</button>
-                     </span>
+                        <input type="text" name="emailAddress" class="form-control" placeholder="mr.beans@prog.kiev.ua">
+                        <input type="hidden" name="courseName" items="${mailId}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Получить ссылки на емейл</button>
+                        </span>
+                        <input type="text" name="fingers" class="form-control" placeholder="Сколько пальцев на руке?">
                     </div>
                 </form>
             </div>

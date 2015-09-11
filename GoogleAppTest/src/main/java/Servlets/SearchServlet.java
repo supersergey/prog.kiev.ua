@@ -34,12 +34,6 @@ public class SearchServlet extends HttpServlet {
     private SpreadsheetService service;
     private SpreadsheetFeed feed;
     private StudentsDAO studentsDAO = new StudentsDAOImpl();
-    private static int counter = 0;
-
-
-    {
-        counter++;
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -59,7 +53,10 @@ public class SearchServlet extends HttpServlet {
                 linksMap = getSearchResults(searchMask);
             response.setStatus(HttpServletResponse.SC_OK);
             response.setCharacterEncoding("UTF-8");
+
             if (null != linksMap) {
+                Integer mailId = MailStack.addNewEntry(linksMap);
+                request.setAttribute("mailId", mailId);
                 request.setAttribute("linksMap", linksMap);
                 request.setAttribute("searchResult", "dataIsFound"); // found
             } else {
