@@ -97,9 +97,9 @@ public class SearchServlet extends HttpServlet {
                 String link = LinkSource.getLinkByCourse(studentCourse);
                 String payment = student.getPayment();
                 if (null == payment || !payment.equals(coursePrice))
-                    linksMap.put(studentCourse, "Для получения ссылки оплатите курс полностью.");
+                    linksMap.put(studentCourse, "");
                 else
-                    linksMap.put(studentCourse, "<a href=\"" + link + "\" target=\"_blank\">Ссылка на видео</a>");
+                    linksMap.put(studentCourse, link);
             }
         }
         return linksMap;

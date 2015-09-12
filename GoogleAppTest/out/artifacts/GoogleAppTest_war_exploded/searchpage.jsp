@@ -42,14 +42,15 @@
 
 
     <div class="jumbotron">
-        <img src="images/keng.png" alt="Greetings from Australia!" hspace="5" vspace="5"
-             style="height: 160px; top: -20px; float: right; display: inline; position: relative">
+        <%--<img src="images/keng.png" alt="Greetings from Australia!" hspace="5" vspace="5"--%>
+             <%--style="height: 160px; top: -20px; float: right; display: inline; position: relative">--%>
+            <img src="images/koalabears.png" alt="Greetings from Australia!" hspace="0" vspace="0" style="width: 248px; height: 373px; top: -105px; right: -160px; float: right; display: inline; position: relative">
 
         <h1>Поиск видео</h1>
 
 
         <form action="/search" method="get">
-            <div id="custom-search-input">
+            <div id="custom-search-input" style="width: 60%">
                 <h2>Введите свой мобильный:</h2>
 
                 <div class="input-group col-md-12">
@@ -69,6 +70,7 @@
 
     <div>
         <c:if test="${searchResult == 'dataIsFound'}">
+            <c:set var="showSendButton" scope="request" value="no"/>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -80,29 +82,35 @@
                 <c:forEach var="entry" items="${linksMap}">
                     <tr>
                         <td><c:out value="${entry.key}"/></td>
-                        <td>${entry.value}</td>
+                        <td>
+                            <c:if test="${entry.value == ''}">
+                                Для получения видео оплатите курс полностью.
+                            </c:if>
+                            <c:if test="${entry.value != ''}">
+                                <a href="${entry.value}" target="_blank">Видео</a></td>
+                                <c:set var="showSendButton" scope="request" value="yes"/>
+                            </c:if>
                     </tr>
                 </c:forEach>
             </table>
+            <c:if test="${showSendButton == 'yes'}">
             <div style="display: block; width: 50%">
                 <form action="/sendMail" method="post">
                     <div class="input-group">
-                     <input type="text" name="emailAddress" class="form-control" placeholder="mr.beans@prog.kiev.ua">
-                        <c:set var="i" scope="request" value="1" />
-                        <input type="hidden" name="courseName" items="${linksMap}">
-                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Получить ссылки на емейл</button>
-                     </span>
+                        <input type="text" name="emailAddress" class="form-control" placeholder="mr.beans@prog.kiev.ua" style="min-width: 150px;">
+                        <input type="hidden" name="mailId" value="${mailId}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Получить ссылки на емейл</button>
+                        </span>
                     </div>
                 </form>
             </div>
+            </c:if>
         </c:if>
         <c:if test="${searchResult == 'userNotFound'}">
             <h3>Студент с таким номером телефона на найден!</h3>
         </c:if>
     </div>
-
-
     <footer class="footer">
         <p>(c) Sergey Tolokunsky 2015 // спасибо <a href="http://prog.kiev.ua" target="_blank">prog.kiev.ua</a></p>
     </footer>
