@@ -42,6 +42,25 @@ public class SendMail extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+<<<<<<< HEAD
+=======
+        String emailAddress = request.getParameter("emailAddress").trim();
+        Integer mailId = Integer.parseInt(request.getParameter("mailId"));
+        MailEntry mailEntry = MailStack.getEntryById(mailId);
+
+        StringBuilder resultText = new StringBuilder();
+
+        for (Map.Entry<String, String> entry : mailEntry.getCourses().entrySet())
+        {
+            if (!entry.getKey().equals("Для получения ссылки оплатите курс полностью."))
+                resultText.append(entry.getKey()).append(": ").append(entry.getValue()).append("\r\n");
+        }
+
+        String msgBody = String.format(message, resultText.toString());
+        Properties props = new Properties();
+        Session session = Session.getDefaultInstance(props, null);
+
+>>>>>>> ce1cf9535f1ffb7d470a8a10874ff8f83284e8e8
         try {
             String emailAddress = request.getParameter("emailAddress").trim();
             Integer mailId = Integer.parseInt(request.getParameter("mailId"));

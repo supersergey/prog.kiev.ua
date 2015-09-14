@@ -97,11 +97,20 @@
             <div style="display: block; width: 50%">
                 <form action="/sendMail" method="post">
                     <div class="input-group">
+<<<<<<< HEAD
                         <input type="text" name="emailAddress" class="form-control" placeholder="mr.beans@prog.kiev.ua" style="min-width: 150px;">
                         <input type="hidden" name="mailId" value="${mailId}">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">Получить ссылки на емейл</button>
                         </span>
+=======
+                        <input type="text" name="emailAddress" class="form-control" placeholder="mr.beans@prog.kiev.ua">
+                        <input type="hidden" name="courseName" items="${mailId}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Получить ссылки на емейл</button>
+                        </span>
+                        <input type="text" name="fingers" class="form-control" placeholder="Сколько пальцев на руке?">
+>>>>>>> ce1cf9535f1ffb7d470a8a10874ff8f83284e8e8
                     </div>
                 </form>
             </div>
