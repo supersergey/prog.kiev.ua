@@ -1,0 +1,41 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building GoogleAppSpring 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ GoogleAppSpring ---
+[INFO] GoogleAppSpring:GoogleAppSpring:war:1.0-SNAPSHOT
+[INFO] +- com.google.appengine:appengine-api-1.0-sdk:jar:1.9.25:compile
+[INFO] +- javax.servlet:servlet-api:jar:2.5:provided
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.1.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.1.4.RELEASE:compile
+[INFO] |  |  \- (org.springframework:spring-core:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- org.springframework:spring-context:jar:4.1.4.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-aop:jar:4.1.4.RELEASE:compile
+[INFO] |  |  |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  |  +- (org.springframework:spring-beans:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  \- (org.springframework:spring-core:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-beans:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-core:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  \- (org.springframework:spring-expression:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- org.springframework:spring-core:jar:4.1.4.RELEASE:compile
+[INFO] |  |  \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.1.4.RELEASE:compile
+[INFO] |  |  \- (org.springframework:spring-core:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |  \- org.springframework:spring-web:jar:4.1.4.RELEASE:compile
+[INFO] |     +- (org.springframework:spring-aop:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |     +- (org.springframework:spring-beans:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |     +- (org.springframework:spring-context:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] |     \- (org.springframework:spring-core:jar:4.1.4.RELEASE:compile - omitted for duplicate)
+[INFO] +- com.google.guava:guava:jar:18.0:compile
+[INFO] \- com.googlecode.objectify:objectify:jar:5.1.5:compile
+[INFO]    \- (com.google.guava:guava:jar:18.0:compile - omitted for duplicate)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1.058 s
+[INFO] Finished at: 2015-09-16T13:37:58+03:00
+[INFO] Final Memory: 15M/307M
+[INFO] ------------------------------------------------------------------------
