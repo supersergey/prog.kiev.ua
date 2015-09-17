@@ -115,7 +115,7 @@ public class SearchController{
                 if (null == payment || !payment.equals(coursePrice))
                     student.setUrl("");
                 else
-                    student.setUrl(LinkSource.getLinkByCourse(studentCourse));
+                    student.setUrl(LinkSource.getLinkByCourse(studentCourse.toLowerCase()));
             }
         }
         return studentsMatchingPhone;
@@ -172,7 +172,6 @@ public class SearchController{
                 for (CellEntry cell : cellFeed.getEntries()) {
                     coursePrice = cell.getCell().getValue();
                 }
-
 
                 cellFeedUrl = new URI(worksheet.getCellFeedUrl().toString()
                         + "?min-row=2&min-col=1&max-col=4").toURL();

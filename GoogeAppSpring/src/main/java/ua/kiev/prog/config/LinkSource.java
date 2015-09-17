@@ -18,7 +18,7 @@ public class LinkSource {
             for (Map.Entry<Object, Object> entry : properties.entrySet())
             {
                 String courseName = (String) (entry.getKey());
-                courseName = courseName.replaceAll("_", " ");
+                courseName = courseName.replaceAll("_", " ").toLowerCase();
                 links.put(courseName, (String) entry.getValue());
             }
         } catch (IOException ex) {
