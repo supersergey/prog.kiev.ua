@@ -1,5 +1,6 @@
 package ua.kiev.prog.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,11 +13,9 @@ import com.google.gdata.client.spreadsheet.SpreadsheetService;
 import com.google.gdata.data.spreadsheet.*;
 import com.google.gdata.util.ServiceException;
 import ua.kiev.prog.config.LinkSource;
-import ua.kiev.prog.config.PriceSource;
+
 
 import javax.mail.MessagingException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,7 +36,8 @@ public class SearchController{
     public final String SPREADSHEETS_FEED_URL = "https://spreadsheets.google.com/feeds/spreadsheets/private/full";
     private SpreadsheetService service;
     private SpreadsheetFeed feed;
-    private StudentsDAO studentsDAO = new StudentsDAOImpl();
+    @Autowired
+    private StudentsDAO studentsDAO;
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView doSearch(HttpServletResponse response, @RequestParam(value="phoneNumber") String searchMask)  {
@@ -68,6 +68,9 @@ public class SearchController{
                 result.addObject("searchResult", "dataIsFound");
                 result.addObject("mailId", mailId); // found
                 for (Student s : studentsMatchingPhone)
+                    if (s.getUrl().isEmpty())
+                        adminMessage.append(String.format(Utils.MESSAGE_IS_NOT_SENT, s.getCourseName(), s.getLocation(), s.getTeacherName(), s.getStartDate(), s.getName(), s.getPhone())).append("\r\n");
+                else
                     adminMessage.append(String.format(Utils.MESSAGE_SENT_TO_PHONE, s.getCourseName(), s.getLocation(), s.getTeacherName(), s.getStartDate(), s.getName(), s.getPhone())).append("\r\n");
                 try
                 {
@@ -107,7 +110,7 @@ public class SearchController{
         if (!studentsMatchingPhone.isEmpty()) {
             for (Student student : studentsMatchingPhone) {
                 String studentCourse = student.getCourseName();
-                String coursePrice = PriceSource.getPriceByCourse(studentCourse);
+                String coursePrice = student.getCoursePrice();
                 String payment = student.getPayment();
                 if (null == payment || !payment.equals(coursePrice))
                     student.setUrl("");
@@ -119,11 +122,6 @@ public class SearchController{
     }
 
     private List<SpreadsheetEntry> loadSpreadsheets() throws ServiceException, IOException, GeneralSecurityException, URISyntaxException {
-
-        /*
-        Uncomment this to use to OAuth2 authorization
-        flow.loadCredential(Servlets.utils.getClientCredential().getDetails().getClientId());
-         */
 
         if (null == Utils.credential)
             Utils.credential = Utils.getP12Credentials();
@@ -164,9 +162,21 @@ public class SearchController{
                 WorksheetFeed worksheetFeed = service.getFeed(
                         spreadsheet.getWorksheetFeedUrl(), WorksheetFeed.class);
                 WorksheetEntry worksheet = worksheetFeed.getEntries().get(0); // retrieve the first worksheet
+
                 URL cellFeedUrl = new URI(worksheet.getCellFeedUrl().toString()
-                        + "?min-row=2&min-col=1&max-col=4").toURL();
+                        + "?min-row=1&max-row=5&min-col=5&max-col=5").toURL();
                 CellFeed cellFeed = service.getFeed(cellFeedUrl, CellFeed.class);
+
+                String coursePrice = "";
+
+                for (CellEntry cell : cellFeed.getEntries()) {
+                    coursePrice = cell.getCell().getValue();
+                }
+
+
+                cellFeedUrl = new URI(worksheet.getCellFeedUrl().toString()
+                        + "?min-row=2&min-col=1&max-col=4").toURL();
+                cellFeed = service.getFeed(cellFeedUrl, CellFeed.class);
 
                 String[][] content = new String[cellFeed.getEntries().size()][4];
                 for (CellEntry cell : cellFeed.getEntries()) {
@@ -190,7 +200,7 @@ public class SearchController{
 
                 for (String[] x : content) {
                     if (null != x[0] || null != x[1] || null != x[2] || null != x[3]) // do not include empty rows
-                        result.add(new Student(x[0], x[1], x[2], x[3], courseName, courseDate, teacherName, location, ""));
+                        result.add(new Student(x[0], x[1], x[2], x[3], courseName, courseDate, teacherName, location, coursePrice, ""));
                 }
             }
         }

@@ -16,7 +16,11 @@ public class LinkSource {
         try {
             properties.load(LinkSource.class.getResourceAsStream("/links.properties"));
             for (Map.Entry<Object, Object> entry : properties.entrySet())
-                links.put((String) entry.getKey(), (String) entry.getValue());
+            {
+                String courseName = (String) (entry.getKey());
+                courseName = courseName.replaceAll("_", " ");
+                links.put(courseName, (String) entry.getValue());
+            }
         } catch (IOException ex) {
             System.out.println("Application initialization error. Check links properties.");
             ex.printStackTrace();

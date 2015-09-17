@@ -34,13 +34,14 @@ public class Utils {
     private static final JacksonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final URL fileUrl = Utils.class.getResource("/Diploma.p12");
     static GoogleCredential credential;
-    private static String CLIENT_ID = "749895953376-d8muikbmv6okhaaa4cthg68g3pamimd1@developer.gserviceaccount.com";
+    private static String CLIENT_ID;
     private static HttpTransport httpTransport;
     static String MESSAGE_SENT_TO_EMAIL;
     static String MESSAGE_SENT_TO_PHONE;
     static String APP_EMAIL_ADDRESS;
     static String APP_FROM_NAME;
     static String ADMIN_EMAIL_ADDRESS;
+    static String MESSAGE_IS_NOT_SENT;
 
     private static final List<String> SCOPES = Arrays.asList(
             "https://spreadsheets.google.com/feeds",
@@ -52,13 +53,14 @@ public class Utils {
         try
         {
             properties.load(Utils.class.getResourceAsStream("/main.properties"));
-            //CLIENT_ID = properties.getProperty("CLIENT_ID");
+            CLIENT_ID = properties.getProperty("CLIENT_ID");
             properties.load(Utils.class.getResourceAsStream("/email.properties"));
             MESSAGE_SENT_TO_EMAIL = properties.getProperty("MESSAGE_SENT_TO_EMAIL");
             MESSAGE_SENT_TO_PHONE = properties.getProperty("MESSAGE_SENT_TO_PHONE");
             APP_EMAIL_ADDRESS = properties.getProperty("APP_EMAIL_ADDRESS");
-            APP_FROM_NAME = properties.getProperty("APP_FROM_NAME ");
-            ADMIN_EMAIL_ADDRESS = properties.getProperty("APP_EMAIL_ADDRESS");
+            APP_FROM_NAME = properties.getProperty("APP_FROM_NAME");
+            ADMIN_EMAIL_ADDRESS = properties.getProperty("ADMIN_EMAIL_ADDRESS");
+            MESSAGE_IS_NOT_SENT = properties.getProperty("MESSAGE_IS_NOT_SENT");
         }
         catch (IOException ex) {
             System.out.println("Application initialization error. Check main properties.");

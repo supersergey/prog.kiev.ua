@@ -15,12 +15,13 @@ public class Student {
     private String startDate;
     private String teacherName;
     private String location;
+    private String coursePrice;
     private String Url;
 
     public Student() {
     }
 
-    public Student(String name, String phone, String payment, String comment, String courseName, String startDate, String teacherName, String location, String url) {
+    public Student(String name, String phone, String payment, String comment, String courseName, String startDate, String teacherName, String location, String coursePrice, String url) {
         this.name = name;
         this.phone = phone;
         this.payment = payment;
@@ -29,6 +30,7 @@ public class Student {
         this.startDate = startDate;
         this.teacherName = teacherName;
         this.location = location;
+        this.coursePrice = coursePrice;
         Url = url;
     }
 
@@ -102,5 +104,13 @@ public class Student {
 
     public void setUrl(String url) {
         Url = url;
+    }
+
+    public String getCoursePrice() {
+        return coursePrice;
+    }
+
+    public void setCoursePrice(String coursePrice) {
+        this.coursePrice = coursePrice;
     }
 }

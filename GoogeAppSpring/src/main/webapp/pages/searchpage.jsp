@@ -112,7 +112,8 @@
         </c:if>
     </div>
     <footer class="footer">
-        <p>(c) Sergey Tolokunsky 2015 // спасибо <a href="http://prog.kiev.ua" target="_blank">prog.kiev.ua</a></p>
+        <p>(c) <a href="https://www.linkedin.com/profile/view?id=AAMAAABUdNMBu3nOOQHFz1f3-pv_qto3WgZP-Hs&trk=hp-identity-name" target="_blank">Sergey Tolokunsky</a> 2015 // спасибо <a href="http://prog.kiev.ua" target="_blank">prog.kiev.ua</a></p>
+        <p><a href="pages/about.html">About this project</a>.</p>
     </footer>
 
 

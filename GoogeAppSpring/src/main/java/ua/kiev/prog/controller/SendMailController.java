@@ -6,24 +6,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ua.kiev.prog.DAO.Student;
-import ua.kiev.prog.controller.MailStack;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by user on 11.09.2015.
@@ -49,7 +39,7 @@ public class SendMailController{
 
 
     @RequestMapping(value = "/sendMail", method = RequestMethod.POST)
-    public ModelAndView doSendMail(HttpServletResponse response, @RequestParam(value = "emailAddress") String emailAddress, @RequestParam(value = "mailId") Integer mailId) {
+    public ModelAndView doSendMail(@RequestParam(value = "emailAddress") String emailAddress, @RequestParam(value = "mailId") Integer mailId) {
 
         ModelAndView result = new ModelAndView("mailsent");
         try {
@@ -62,13 +52,28 @@ public class SendMailController{
             StringBuilder adminMessage = new StringBuilder();
             for (Student student : studentsList)
             {
-                if (!student.getCourseName().equals(""))
-                    resultText.append("\r\n").append(student.getCourseName()).append(": ").append(student.getUrl());
-                adminMessage.append(String.format(Utils.MESSAGE_SENT_TO_EMAIL, student.getCourseName(), student.getLocation(), student.getTeacherName(), student.getStartDate(), student.getName(), student.getPhone(), emailAddress)).append("r\n");
+                String courseUrl = student.getUrl();
+                if (courseUrl.isEmpty())
+                {
+                    courseUrl = "Видео недоступно, т.к. не получена полная оплата за курс";
+                    adminMessage.append(String.format(Utils.MESSAGE_IS_NOT_SENT, student.getCourseName(),
+                            student.getLocation(),
+                            student.getTeacherName(),
+                            student.getStartDate(),
+                            student.getName(),
+                            student.getPhone()))
+                            .append("\r\n");
+                }
+                else
+                    adminMessage.append(String.format(Utils.MESSAGE_SENT_TO_EMAIL, student.getCourseName(), student.getLocation(), student.getTeacherName(), student.getStartDate(), student.getName(), student.getPhone(), emailAddress)).append("\r\n");
+                resultText.append("\r\n").append(student.getCourseName()).append(": ").append(courseUrl);
             }
             String msgBody = String.format(message, resultText.toString());
             Utils.sendUserEmail(emailAddress, "Prog.kiev.ua video", msgBody);
-            Utils.sendAdminEmail(studentsList.get(0).getPhone(), adminMessage.toString());
+            if (!adminMessage.toString().isEmpty())
+            {
+                Utils.sendAdminEmail(studentsList.get(0).getPhone(), adminMessage.toString());
+            }
             result.addObject("mailSent", "success");
 
         } catch (MessagingException | UnsupportedEncodingException ex) {
